@@ -8,6 +8,12 @@ import { PageNotFoundedComponent } from './view/page-not-founded/page-not-founde
 import { MenuComponent } from './view/menu/menu.component';
 import { OurServiceComponent } from './view/declarations/home-page/our-service/our-service.component';
 import {HttpClientModule} from '@angular/common/http';
+import {DeclarationISComponent} from "./view/declaration-is/declaration-is.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import {DialogFactureComponent} from "./view/dialog-facture/dialog-facture.component";
+import {FormsModule} from "@angular/forms";
+import {DeclarationIsCriteriaComponent} from "./view/declaration-is-criteria/declaration-is-criteria.component";
 
 
 
@@ -19,13 +25,18 @@ import {HttpClientModule} from '@angular/common/http';
     MenuComponent,
    components,
    OurServiceComponent,
-
+    DialogFactureComponent,
+    DeclarationISComponent,
+    DeclarationIsCriteriaComponent
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

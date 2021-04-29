@@ -1,0 +1,157 @@
+<p> </p>
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header" >Declaration IS</div>
+    <div class="card-body">
+      <!--<div class="col-md-4 offset-md-4"><label>SOCIÉTÉ</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="ICE">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Button</button>
+          </div>
+        </div>
+    </div>-->
+      <div class="col-md-4 offset-md-4"><label>Société  &  Année</label>
+        <div class="input-group">
+          <input type="text" placeholder="ICE Société" class="form-control" [(ngModel)]="declarationIs.societe.ice">
+          <input type="text" placeholder="Année" class="form-control" [(ngModel)]="declarationIs.annee">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button" (click)="findFactBySocSourceAndAnnee(declarationIs)">Search</button>
+          </div>
+        </div>
+      </div>
+      <p> </p>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight: bold; font-size: 16px">Factures -crédit-</h5>
+              <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Libellé</th>
+                  <th scope="col">Année</th>
+                  <th scope="col">MontantHT</th>
+                  <th scope="col">MontantTTC</th>
+                  <th scope="col">MontantTVA</th>
+                  <th scope="col">Source</th>
+                  <th scope="col">Destination</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let fd of factureListCredit">
+                  <th scope="row">{{fd.ref}}</th>
+                  <th>{{fd.annee}}</th>
+                  <th>{{fd.montantHorsTaxe}}</th>
+                  <th>{{fd.montantTTC}}</th>
+                  <th>{{fd.montantTVA}}</th>
+                  <th>{{fd.societeSource.ice}}</th>
+                  <th>{{fd.societeDistination.ice}}</th>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p> </p>
+          <!--
+          <div class="col-md-4 offset-md-4"><label>Total hors taxe gain :</label>
+            <input type="text" disabled class="form-control">
+          </div>
+          -->
+
+          <div class="col-md-4 offset-md-4"><label>Total hors taxe gain :</label>
+            <div class="input-group">
+              <input type="text" disabled class="form-control" [value]="declarationIs.totalHTGain">
+              <div class="input-group-append">
+                <span class="input-group-text">MAD</span>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight: bold; font-size: 16px">Factures -débit-</h5>
+              <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Libellé</th>
+                  <th scope="col">Année</th>
+                  <th scope="col">MontantHT</th>
+                  <th scope="col">MontantTTC</th>
+                  <th scope="col">MontantTVA</th>
+                  <th scope="col">Source</th>
+                  <th scope="col">Destination</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let fd of factureListDebit">
+                  <th scope="row">{{fd.ref}}</th>
+                  <th>{{fd.annee}}</th>
+                  <th>{{fd.montantHorsTaxe}}</th>
+                  <th>{{fd.montantTTC}}</th>
+                  <th>{{fd.montantTVA}}</th>
+                  <th>{{fd.societeSource.ice}}</th>
+                  <th>{{fd.societeDistination.ice}}</th>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p> </p>
+          <div class="col-md-4 offset-md-4"><label>Total hors taxe charge :</label>
+            <div class="input-group">
+              <input type="text" disabled class="form-control" [value]="declarationIs.totalHTCharge">
+              <div class="input-group-append">
+                <span class="input-group-text">MAD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p> </p>
+     <div><button id="plus" class="btn btn-secondary" (click)="openDialog()">Ajouter une facture</button></div>
+
+      <p> </p>
+      <div class="col-md-4 offset-md-4"><label>Résultat fiscal :</label>
+        <div class="input-group">
+          <input type="text" disabled class="form-control" [value]="declarationIs.totalHTDiff">
+          <div class="input-group-append">
+            <span class="input-group-text">MAD</span>
+          </div>
+        </div>
+      </div>
+
+      <p></p>
+      <div class="col-md-4 offset-md-4"><label>Montant IS calculé :</label>
+        <div class="input-group">
+          <input type="text" disabled class="form-control" [value]="declarationIs.montantISCalcule">
+          <div class="input-group-append">
+            <span class="input-group-text">MAD</span>
+          </div>
+        </div>
+      </div>
+      <p></p>
+      <div class="col-md-4 offset-md-4"><label>Montant IS payé :</label>
+        <div class="input-group">
+          <input type="text" disabled class="form-control" [value]="declarationIs.montantISPaye">
+          <div class="input-group-append">
+            <span class="input-group-text">MAD</span>
+          </div>
+        </div>
+      </div>
+      <!--
+      <div class="col-md-4 offset-md-4"><label>Montant IS payé:</label>
+        <input type="text" disabled class="form-control" placeholder="Montant IS" [value]="declarationIs.montantISPaye">
+      </div> -->
+      <p> </p>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary btn-block fa fa-download"></button>
+      <button type="button" class="btn btn-primary btn-block btn-lg" (click)="save(declarationIs)">SAVE</button>
+    </div>
+  </div>
+</div>
+<p> </p>

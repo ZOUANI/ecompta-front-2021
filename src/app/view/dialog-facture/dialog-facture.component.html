@@ -1,0 +1,91 @@
+<div class="b">
+  <h2 mat-dialog-title>Création d'une nouvelle facture</h2>
+  <mat-dialog-content>
+
+    <p>  </p>
+    <div class="card">
+
+      <div class="card-body">
+
+        <div class="form-group">
+          <label>Reference: </label>
+          <input type="text" class="form-control" [(ngModel)]="facture.ref">
+        </div>
+
+        <div class="form-group">
+          <label>Libellé: </label>
+          <input type="text" class="form-control" [(ngModel)]="facture.libelle">
+        </div>
+
+        <div class="form-group">
+          <label>Date opération: </label>
+          <input type="date" class="form-control" [(ngModel)]="facture.dateOperation">
+        </div>
+
+        <div class="form-group">
+          <label>Année: </label>
+          <input type="number" class="form-control" [(ngModel)]="declarationIs.annee">
+        </div>
+
+        <div class="form-group">
+          <label>Mois: </label>
+          <input type="number" class="form-control" [(ngModel)]="facture.mois">
+        </div>
+
+        <div class="form-group">
+          <label>Trim : </label>
+          <input type="number" class="form-control" [(ngModel)]="facture.trim">
+        </div>
+
+        <div class="form-group">
+          <label>Montant hors taxe: </label>
+          <input type="number" class="form-control" [(ngModel)]="facture.montantHorsTaxe">
+        </div>
+
+        <div class="form-group">
+          <label>Montant TTC : </label>
+          <input type="number" class="form-control" [(ngModel)]="facture.montantTTC">
+        </div>
+
+        <div class="form-group">
+          <label>Montant TVA : </label>
+          <input type="number" class="form-control" [(ngModel)]="facture.montantTVA">
+        </div>
+
+        <div class="form-group">
+          <label>Type opération : </label>
+          <input type="text" class="form-control" [(ngModel)]="facture.typeOperation">
+        </div>
+
+        <div class="form-group">
+          <label>TVA : </label>
+          <input type="text" class="form-control" [(ngModel)]="facture.tva.ref">
+        </div>
+
+        <div class="form-group">
+          <label>Société source : </label>
+          <input type="text" class="form-control" placeholder="ICE" [(ngModel)]="facture.societeSource.ice">
+        </div>
+
+        <div class="form-group">
+          <label>Société destination : </label>
+          <input type="text" class="form-control" placeholder="ICE" [(ngModel)]="facture.societeDistination.ice">
+        </div>
+
+        <div class="form-group">
+          <label>Class comptable : </label>
+          <input type="text" class="form-control" placeholder="Réference" [(ngModel)]="facture.classComptable.ref">
+        </div>
+
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-outline-dark btn-block" (click)="saveFacture(declarationIs, factureListDebit, factureListCredit)">Save</button>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+  </mat-dialog-actions>
+
+</div>

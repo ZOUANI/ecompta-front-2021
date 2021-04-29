@@ -1,0 +1,55 @@
+<div class="container" style="margin-top: 6%">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card">
+        <table class="table">
+          <thead class="table-dark">
+          <th>Class</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of classComptables">
+            <td>
+              <button type="button" class="btn btn-outline-primary"
+                      (click)="displaySection(c.ref)">{{c.libelle}}</button>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card" *ngIf="sections!=null">
+        <table class="table">
+          <thead class="table-dark">
+          <th>Section</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of sections">
+            <td>
+              <button type="button" class="btn btn-outline-primary"
+                      (click)="displayCategorie(c.ref)">{{c.libelle}}</button>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-sm">
+      <div class="card" *ngIf="categories!=null">
+        <table class="table">
+          <thead class="table-dark">
+          <th>Categorie</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of categories">
+            <td>{{c.libelle}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
