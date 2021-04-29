@@ -9,6 +9,13 @@ import { MenuComponent } from './view/menu/menu.component';
 import { OurServiceComponent } from './view/declarations/home-page/our-service/our-service.component';
 import {HttpClientModule} from '@angular/common/http';
 
+import { DeclarationTVAComponent } from './view/LesServices/declaration-tva/declaration-tva.component';
+import { DeclarationIRComponent } from './view/LesServices/declaration-ir/declaration-ir.component';
+import { DeclarationISComponent } from './view/LesServices/declaration-is/declaration-is.component';
+import { FactureComponent } from './view/LesServices/facture/facture.component';
+import {CreationComponent} from './view/LesServices/creation/creation.component';
+import {LiquidationComponent} from './view/LesServices/liquidation/liquidation.component';
+
 
 
 
@@ -19,6 +26,12 @@ import {HttpClientModule} from '@angular/common/http';
     MenuComponent,
    components,
    OurServiceComponent,
+   CreationComponent,
+   LiquidationComponent,
+   DeclarationTVAComponent,
+   DeclarationIRComponent,
+   DeclarationISComponent,
+   FactureComponent,
 
 
   ],
