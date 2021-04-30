@@ -1,0 +1,21 @@
+h1{
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+}
+.col-md-3{
+  padding: 15px;
+  text-align: center;
+}
+
+#firstcard{
+  border-color: #df0c1d;
+  border-radius: 16px;
+  border-width: 3px;
+  background-color: #fafafa;
+}
+.card{
+  border-color: darkred;
+}

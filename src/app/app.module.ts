@@ -13,6 +13,7 @@ import {DeclarationIsCriteriaComponent} from "./view/declaration-is-criteria/dec
 import {DialogFactureComponent} from "./view/dialog-facture/dialog-facture.component";
 import {FormsModule} from "@angular/forms";
 import { DeclarationIsSaveComponent } from './view/declaration-is-save/declaration-is-save.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -34,7 +35,8 @@ import { DeclarationIsSaveComponent } from './view/declaration-is-save/declarati
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

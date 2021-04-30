@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import {DeclarationIS} from '../../controller/model/declaration-is.model';

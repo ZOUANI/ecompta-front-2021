@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {TauxIS} from '../model/taux-is.model';
 import {Societe} from '../model/societe.model';
+import {createMouseEvent} from "@angular/cdk/testing/testbed/fake-events";
 
 @Injectable({
   providedIn: 'root'
@@ -127,6 +128,7 @@ export class DeclarationISService {
   }
 
   public saveFacture(decIS: DeclarationIS, debit: Array<Facture>, credit: Array<Facture>){
+
     this.http.post<number>(environment.baseUrlGestionComptabilite + '/facture/', this.facture).subscribe(
       data =>{
         if (data > 0){
