@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <h1>DÉCLARATION IS Criteria</h1>
+    <div class="card" id="firstcard">
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header" style="font-size:16.0pt">Search Declaration IS :</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3 offset-md-2"><label>Reference :</label>
+                <input type="text" class="form-control" [(ngModel)]="declarationVo.ref">
+              </div>
+              <div class="col-md-3 offset-md-1"><label>Société :</label>
+                <input type="text" class="form-control" [(ngModel)]="declarationVo.societe">
+              </div>
+              <div class="col-md-3 offset-md-1"><label>Année :</label>
+                <input type="text" class="form-control" [(ngModel)]="declarationVo.annee">
+              </div>
+              <div class="col-md-3"><label>Année minimum :</label>
+                <input type="text" class="form-control" [(ngModel)]="declarationVo.anneeMin">
+              </div>
+              <div class="col-md-3"><label>Année maximum :</label>
+                <input type="text" class="form-control" [(ngModel)]="declarationVo.anneeMax">
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-outline-primary btn-lg btn-block fa fa-search" (click)="criteriaIS()"></button>
+          </div>
+        </div>
+        <p>  </p>
+        <div class="card">
+          <div class="card-header" style="font-size:16.0pt">Result </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg">
+                    <h5 class="card-title" style="font-size:14.0pt">Déclaration IS</h5>
+                    <table class="table table-hover table-striped">
+                      <thead>
+                      <th>Reference</th>
+                      <th>Année</th>
+                      <th>TotalHTGain</th>
+                      <th>TotalHTCharge</th>
+                      <th>Résultat fiscal</th>
+                      <th>Montant IS calculé</th>
+                      <th>Montant IS payé</th>
+                      <th>Société</th>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let d of declarationISList">
+                        <td>{{d.ref}}</td>
+                        <td>{{d.annee}}</td>
+                        <td>{{d.totalHTGain}}</td>
+                        <td>{{d.totalHTCharge}}</td>
+                        <td>{{d.totalHTDiff}}</td>
+                        <td>{{d.montantISCalcule}}</td>
+                        <td>{{d.montantISPaye}}</td>
+                        <td>{{d.societe.ice}}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+              </div>
+            </div>
+            <p></p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- ----- -->
+
+</div>

@@ -1,0 +1,27 @@
+#plus{
+  width: 200px;
+  height: 50px;
+  margin-left: 670px;
+}
+#card1{
+  border-color: #df0c1d;
+  border-radius: 16px;
+  border-width: 3px;
+  background-color: #fafafa;
+}
+
+h1{
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+}
+.col-md-3{
+  padding: 15px;
+}
+
+div.col-sm-6 > div.card{
+  border-color: darkred;
+  background-color: #fafafa;
+}

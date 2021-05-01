@@ -8,13 +8,12 @@ import { PageNotFoundedComponent } from './view/page-not-founded/page-not-founde
 import { MenuComponent } from './view/menu/menu.component';
 import { OurServiceComponent } from './view/declarations/home-page/our-service/our-service.component';
 import {HttpClientModule} from '@angular/common/http';
-
-import { DeclarationTVAComponent } from './view/LesServices/declaration-tva/declaration-tva.component';
-import { DeclarationIRComponent } from './view/LesServices/declaration-ir/declaration-ir.component';
-import { DeclarationISComponent } from './view/LesServices/declaration-is/declaration-is.component';
-import { FactureComponent } from './view/LesServices/facture/facture.component';
-import {CreationComponent} from './view/LesServices/creation/creation.component';
-import {LiquidationComponent} from './view/LesServices/liquidation/liquidation.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {DeclarationIsCriteriaComponent} from "./view/declaration-is-criteria/declaration-is-criteria.component";
+import {DialogFactureComponent} from "./view/dialog-facture/dialog-facture.component";
+import {FormsModule} from "@angular/forms";
+import { DeclarationIsSaveComponent } from './view/declaration-is-save/declaration-is-save.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -26,19 +25,18 @@ import {LiquidationComponent} from './view/LesServices/liquidation/liquidation.c
     MenuComponent,
    components,
    OurServiceComponent,
-   CreationComponent,
-   LiquidationComponent,
-   DeclarationTVAComponent,
-   DeclarationIRComponent,
-   DeclarationISComponent,
-   FactureComponent,
-
+    DeclarationIsCriteriaComponent,
+    DialogFactureComponent,
+    DeclarationIsSaveComponent
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
