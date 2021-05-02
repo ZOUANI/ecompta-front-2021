@@ -66,6 +66,7 @@ export class ClassComptableComponent implements OnInit {
   // tslint:disable-next-line:typedef
   displaySousClasse(numero: number) {
     this.classeComptableSevice.displaySousClasse(numero);
+    this.classeComptableSevice.compteCopmtables = null;
   }
   get sousClasseComptables(): Array<SousClasseComptable>{
     // tslint:disable-next-line:no-unused-expression

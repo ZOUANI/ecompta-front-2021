@@ -8,7 +8,7 @@ import { PageNotFoundedComponent } from './view/page-not-founded/page-not-founde
 import { MenuComponent } from './view/menu/menu.component';
 import { OurServiceComponent } from './view/declarations/home-page/our-service/our-service.component';
 import {HttpClientModule} from '@angular/common/http';
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule} from '@angular/material/dialog';
 import {DeclarationIsCriteriaComponent} from "./view/declaration-is-criteria/declaration-is-criteria.component";
 import {DialogFactureComponent} from "./view/dialog-facture/dialog-facture.component";
 import {FormsModule} from "@angular/forms";
@@ -19,6 +19,7 @@ import {DeclarationTva} from "./controller/model/declaration-tva.model";
 import {DecltvacriteriaComponent} from "./view/decltvacriteria/decltvacriteria.component";
 import {PopupFactureComponent} from "./view/popup-facture/popup-facture.component";
 import { DeclarationTvasaveComponent } from './view/declaration-tvasave/declaration-tvasave.component';
+import {ClassComptableComponent} from "./view/classeComptable/classComptable.component";
 
 
 
@@ -35,6 +36,7 @@ import { DeclarationTvasaveComponent } from './view/declaration-tvasave/declarat
     DeclarationIsSaveComponent,
     DecltvacriteriaComponent,
     PopupFactureComponent,
+    ClassComptableComponent,
     DeclarationTvasaveComponent
 
   ],
