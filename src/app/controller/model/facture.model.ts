@@ -1,7 +1,8 @@
 import {Societe} from './societe.model';
 import {DeclarationIS} from './declaration-is.model';
 import {Tva} from './tva.model';
-import {ClassComptable} from './classComptable.model';
+import {DeclarationTva} from "./declaration-tva.model";
+import {ClasseComptable} from "./classeComptable.model";
 
 export class Facture {
   public id: number;
@@ -18,6 +19,7 @@ export class Facture {
   public societeSource = new Societe;
   public societeDistination = new Societe;
   public tva = new Tva;
-  public classComptable = new ClassComptable;
+  public classComptable = new ClasseComptable();
   public  declarationIS = new DeclarationIS;
+  public declarationTva = new DeclarationTva();
 }

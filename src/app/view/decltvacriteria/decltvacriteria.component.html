@@ -1,0 +1,158 @@
+<div class="container-fluid col-md-12">
+  <div class="card">
+    <p></p>
+    <div class="card">
+      <div class="card-header" style="font-size:18.0pt" id="n1">Declaration Tva Criteria </div>
+      <div class="card-body">
+        <div class="card-header" style="font-size:16.0pt" id="n2">Chercher Declaration Tva :</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6"><label>Societe :</label>
+              <input type="text" class="form-control" [(ngModel)]="declatvacriteria.societeref">
+            </div>
+            <div class="col-md-6"><label>Annee :</label>
+              <input type="text" class="form-control" [(ngModel)]="declatvacriteria.annee">
+            </div>
+            <div class="col-md-6"><label>Mois :</label>
+              <input type="text" class="form-control" [(ngModel)]="declatvacriteria.mois">
+            </div>
+            <div class="col-md-6"><label>Trim :</label>
+              <input type="text" class="form-control" [(ngModel)]="declatvacriteria.trim">
+            </div>
+            <div class="col-md-6"><label>Difference Tva min :</label>
+              <input type="text" class="form-control" [(ngModel)]="declatvacriteria.difftvamin">
+            </div>
+            <div class="col-md-6"><label>Difference Tva max:</label>
+              <input type="text" class="form-control" [(ngModel)]="declatvacriteria.difftvamax">
+            </div>
+            <div class="col-md-6"><label>Type Declaration Tva :</label>
+              <input type="text" class="form-control" [(ngModel)]="declatvacriteria.typedeclarationtva">
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-outline-primary btn-block col-md-4 offset-4" (click)="trouverdeclarationtva()">Chercher</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="font-size:16.0pt" id="n3">Resultat </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Declaration Tva</h5>
+                <table class="table table-hover table-striped">
+                  <thead>
+                  <th>Reference</th>
+                  <th>Annee</th>
+                  <th>Mois</th>
+                  <th>Trim</th>
+                  <th>Tva Collecter</th>
+                  <th>Tva Deductible</th>
+                  <th>Difference Tva</th>
+                  <th>Societe</th>
+                  <th>Type Declaration Tva</th>
+                  <th>Action</th>
+                  <th>Details</th>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let d of listdeclarationtva |paginate: {id:'listdeclarationtva',itemsPerPage: 4, currentPage:page1, totalItems:listdeclarationtva.length };">
+                    <td>{{d.ref}}</td>
+                    <td>{{d.annee}}</td>
+                    <td>{{d.mois}}</td>
+                    <td>{{d.trim}}</td>
+                    <td>{{d.tvacollecter}}</td>
+                    <td>{{d.tvaperdue}}</td>
+                    <td>{{d.difftva}}</td>
+                    <td>{{d.societe.ice}}</td>
+                    <td>{{d.typeDeclarationTva.ref}}</td>
+                    <td>
+                      <span><i class="fa fa-trash btn btn-danger"></i></span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary btn-block" (click)="trvdetails(d)">Details</button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <pagination-controls id="listdeclarationtva" maxSize="5" directionLinks="true" (pageChange)="page1=$event"></pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p></p>
+      </div>
+    </div>
+    <div class="card">
+
+      <div class="card-header" style="font-size:16.0pt">Les Factures:</div>
+
+      <div class="card-body">
+        <div class="row">
+          <div class="card col-md-6">
+            <div class="card-header">Factures Ventes:</div>
+            <div class="card-body">
+              <table class="table table-hover table-striped">
+                <thead>
+                <th>Reference</th>
+                <th>Mt Hors Taxe</th>
+                <th>Mt TTC</th>
+                <th>Mt TVA</th>
+                <th>Action</th>
+                </thead>
+                <tbody>
+                <tr *ngFor="let l of declarationtvavo2.listfacturevente |paginate: {id:'listvente',itemsPerPage: 1, currentPage:page2, totalItems:declarationtvavo2.listfacturevente.length }; index as i;">
+                  <td>{{l.ref}}</td>
+                  <td>{{l.montantHorsTaxe}}</td>
+                  <td>{{l.montantTTC}}</td>
+                  <td>{{l.montantTVA}}</td>
+                  <td>
+                    <span (click)="delete1(i,l)"><i class="fa fa-trash btn btn-danger"></i></span>
+                    <span (click)="popupupdate(l)"><i class="fa fa-edit btn btn-warning"></i></span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <div>
+                <pagination-controls id="listvente" maxSize="5" directionLinks="true" (pageChange)="page2=$event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+          <div class="card col-md-6">
+            <div class="card-header">Factures ACHAT:</div>
+            <div class="card-body">
+              <table class="table table-hover table-striped">
+                <thead>
+                <th>Reference</th>
+                <th>Mt Hors Taxe</th>
+                <th>Mt TTC</th>
+                <th>Mt TVA</th>
+                <th>Action</th>
+                </thead>
+                <tbody>
+                <tr *ngFor="let l of declarationtvavo2.listfactureachat |paginate: {id:'listachat',itemsPerPage: 1, currentPage:page3, totalItems:declarationtvavo2.listfactureachat.length }; index as i">
+                  <td>{{l.ref}}</td>
+                  <td>{{l.montantHorsTaxe}}</td>
+                  <td>{{l.montantTTC}}</td>
+                  <td>{{l.montantTVA}}</td>
+                  <td>
+                    <span (click)="delete1(i,l)"><i class="fa fa-trash btn btn-danger"></i></span>
+                    <span (click)="popupupdate(l)"><i class="fa fa-edit btn btn-warning"></i></span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <div>
+                <pagination-controls id="listachat" maxSize="5" directionLinks="true" (pageChange)="page3=$event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
