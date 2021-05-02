@@ -27,6 +27,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "just": "^0.1.8",
+    "ngx-pagination": "^5.0.0",
     "rxjs": "~6.6.0",
     "save": "^2.4.0",
     "tslib": "^2.0.0",
