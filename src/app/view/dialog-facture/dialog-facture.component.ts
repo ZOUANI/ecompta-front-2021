@@ -4,6 +4,7 @@ import {MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import {DeclarationIS} from '../../controller/model/declaration-is.model';
 import {Facture} from '../../controller/model/facture.model';
 import {DeclarationISService} from '../../controller/service/declaration-is.service';
+import {DeclarationIsObject} from "../../controller/model/declaration-is-object.model";
 
 
 @Component({
@@ -19,21 +20,23 @@ export class DialogFactureComponent implements OnInit {
     this.dialogRef.close("Thanks for using me!");
   }
 
-  public saveFacture(decIS: DeclarationIS, debit: Array<Facture>, credit: Array<Facture>){
-    return this.declarationIsService.saveFacture(decIS, debit, credit);
+  public closeAndRefresh(): DeclarationIsObject{
+    this.close();
+    return this.declarationIsService.afficherDecIS();
   }
+
+  public saveFacture(){
+    return this.declarationIsService.saveFacture();
+  }
+
+
   get facture(): Facture {
     return this.declarationIsService.facture;
   }
   get declarationIs(): DeclarationIS {
     return this.declarationIsService.declarationIs;
   }
-  get factureListDebit(): Array<Facture> {
-    return this.declarationIsService.factureListDebit;
-  }
-  get factureListCredit(): Array<Facture> {
-    return this.declarationIsService.factureListCredit;
-  }
+
   ngOnInit(): void {
   }
 

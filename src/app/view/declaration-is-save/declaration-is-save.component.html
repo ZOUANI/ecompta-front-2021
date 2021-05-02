@@ -5,19 +5,19 @@
     <div class="card-body">
       <div class="col-md-4 offset-md-4"><label>Société  &  Année</label>
         <div class="input-group">
-          <input type="text" placeholder="ICE Société" class="form-control" [(ngModel)]="declarationIs.societe.ice">
-          <input type="text" placeholder="Année" class="form-control" [(ngModel)]="declarationIs.annee">
+          <input type="text" placeholder="ICE Société" class="form-control" [(ngModel)]="declarationIsObject.iceSociete" [(ngModel)]="declarationIs.societe.ice" >
+          <input type="text" placeholder="Année" class="form-control" [(ngModel)]="declarationIsObject.annee" [(ngModel)]="declarationIs.annee">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary" type="button" (click)="findFactBySocSourceAndAnnee(declarationIs)">Search</button>
+            <button class="btn btn-outline-secondary" type="button" (click)="afficherDecIS()">Search</button>
           </div>
         </div>
       </div>
-      <p> </p>
+      <p></p>
+      <div class="card" id="cardFact">
       <div class="row">
         <div class="col-sm-6">
-          <div class="card">
             <div class="card-body">
-              <h5 class="card-title" style="font-weight: bold; font-size: 16px">Factures -crédit-  <span id="factc" class="btn btn-secondary fa fa-plus" (click)="openDialog()"></span></h5>
+              <h5 class="card-title" style="font-weight: bold; font-size: 16px">Factures -crédit-  <span id="factc" class="btn btn-secondary fa fa-plus" (click)="creerFactCred()"></span></h5>
               <table class="table">
                 <thead class="thead-dark">
                 <tr>
@@ -26,32 +26,28 @@
                   <th scope="col">Source</th>
                   <th scope="col">Destination</th>
                   <th scope="col">Action</th>
+                  <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let fd of factureListCredit">
-                  <th scope="row">{{fd.ref}}</th>
-                  <th>{{fd.montantHorsTaxe}}</th>
-                  <th>{{fd.societeSource.ice}}</th>
-                  <th>{{fd.societeDistination.ice}}</th>
-                  <th>
-                    <button class="btn btn-warning fa fa-edit"></button>
-                    <button class="btn btn-danger fa fa-trash"></button>
-                  </th>
+                <tr *ngFor="let fc of declarationIsObject.factureC, index as i">
+                  <th scope="row">{{fc.ref}}</th>
+                  <td>{{fc.montantHorsTaxe}}</td>
+                  <td>{{fc.societeSource.ice}}</td>
+                  <td>{{fc.societeDistination.ice}}</td>
+                  <td><div class="circle-btn"><button type="button" class=" fa fa-trash btn btn-danger" (click)="deleteFact(i, fc)"></button></div></td>
+                  <td><div class="circle-btn"><button type="button" class=" fa fa-edit btn btn-warning" (click)="clicUpdateF(i, fc)"></button></div></td>
                 </tr>
                 </tbody>
               </table>
             </div>
-          </div>
+            <!--  table 2 -->
           <p> </p>
           <!--- gain --->
-
-
         </div>
         <div class="col-sm-6">
-          <div class="card">
             <div class="card-body">
-              <h5 class="card-title" style="font-weight: bold; font-size: 16px">Factures -débit-  <span id="factd" class="btn btn-secondary fa fa-plus" (click)="openDialog()"></span></h5>
+              <h5 class="card-title" style="font-weight: bold; font-size: 16px">Factures -débit-  <span id="factd" class="btn btn-secondary fa fa-plus" (click)="creerFactDeb()"></span></h5>
               <table class="table">
                 <thead class="thead-dark">
                 <tr>
@@ -60,35 +56,29 @@
                   <th scope="col">Source</th>
                   <th scope="col">Destination</th>
                   <th scope="col">Action</th>
+                  <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let fd of factureListDebit">
+                <tr *ngFor="let fd of declarationIsObject.factureD, index as i">
                   <th scope="row">{{fd.ref}}</th>
-                  <th>{{fd.montantHorsTaxe}}</th>
-                  <th>{{fd.societeSource.ice}}</th>
-                  <th>{{fd.societeDistination.ice}}</th>
-                  <th>
-                    <button class="btn btn-warning fa fa-edit"></button>
-                    <button class="btn btn-danger fa fa-trash"></button>
-                  </th>
+                  <td>{{fd.montantHorsTaxe}}</td>
+                  <td>{{fd.societeSource.ice}}</td>
+                  <td>{{fd.societeDistination.ice}}</td>
+                  <td><div class="circle-btn"><button type="button" class=" fa fa-trash btn btn-danger" (click)="deleteFact(i, fd)"></button></div></td>
+                  <td><div class="circle-btn"><button type="button" class=" fa fa-edit btn btn-warning" (click)="clicUpdateF(i, fd)"></button></div></td>
                 </tr>
                 </tbody>
               </table>
             </div>
-          </div>
-          <p> </p>
-          <!---- charge--->
-           <p> </p>
         </div>
+      </div>
       </div>
       <p> </p>
       <div class="row">
-
-        <!------>
         <div class="col-md-2 offset-md-2"><label>Total hors taxe gain :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIs.totalHTGain">
+            <input type="text" disabled class="form-control" [value]="declarationIsObject.totalHTGain">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -98,7 +88,7 @@
 
         <div class="col-md-2 offset-md-4"><label>Total hors taxe charge :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIs.totalHTCharge">
+            <input type="text" disabled class="form-control" [value]="declarationIsObject.totalHTCharge">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -107,11 +97,9 @@
 
         <!------>
 
-
-
         <div class="col-md-3"><label>Résultat fiscal :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIs.totalHTDiff">
+            <input type="text" disabled class="form-control" [value]="declarationIsObject.totalHTDiff">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -119,7 +107,7 @@
         </div>
         <div class="col-md-3"><label>Cotisation minimale :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIs.montantISCalcule">
+            <input type="text" disabled class="form-control" [value]="declarationIsObject.montantISCalcule">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -127,7 +115,7 @@
         </div>
         <div class="col-md-3"><label>Montant IS calculé :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIs.montantISCalcule">
+            <input type="text" disabled class="form-control" [value]="declarationIsObject.montantISCalcule">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -135,7 +123,7 @@
         </div>
         <div class="col-md-3"><label>Montant IS payé :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIs.montantISPaye">
+            <input type="text" disabled class="form-control" [value]="declarationIsObject.montantISPaye">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -150,7 +138,7 @@
     </div>
     <div class="card-footer">
       <button class="btn btn-primary btn-block fa fa-download"></button>
-      <button type="button" class="btn btn-primary btn-block btn-lg" (click)="save(declarationIs)">SAVE</button>
+      <button type="button" class="btn btn-primary btn-block btn-lg" (click)="save()">SAVE</button>
     </div>
   </div>
 </div>

@@ -18,10 +18,21 @@ h1{
   padding-bottom: 2.5%;
 }
 .col-md-3{
-  padding: 15px;
+  padding-top: 28px;
 }
 
-div.col-sm-6 > div.card{
+#cardFact{
   border-color: darkred;
   background-color: #fafafa;
+}
+
+.circle-btn button{
+  margin: 2px;
+  border-radius: 50%;
+  height:38px;
+  width:38px;
+  font-size: 17px;
+}
+.col-md-2 > label, .col-md-3 > label{
+  font-weight: bold;
 }

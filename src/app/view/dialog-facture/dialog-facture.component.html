@@ -22,34 +22,10 @@
         </div>
 
         <div class="col-md-4">
-          <label>Année: </label>
-          <input type="number" class="form-control" [(ngModel)]="declarationIs.annee">
-        </div>
-
-        <div class="col-md-4">
-          <label>Mois: </label>
-          <input type="number" class="form-control" [(ngModel)]="facture.mois">
-        </div>
-
-        <div class="col-md-4">
-          <label>Trim : </label>
-          <input type="number" class="form-control" [(ngModel)]="facture.trim">
-        </div>
-
-        <div class="col-md-4">
           <label>Montant hors taxe: </label>
           <input type="number" class="form-control" [(ngModel)]="facture.montantHorsTaxe">
         </div>
 
-        <div class="col-md-4">
-          <label>Montant TTC : </label>
-          <input type="number" class="form-control" [(ngModel)]="facture.montantTTC">
-        </div>
-
-        <div class="col-md-4">
-          <label>Montant TVA : </label>
-          <input type="number" class="form-control" [(ngModel)]="facture.montantTVA">
-        </div>
 
         <div class="col-md-4">
           <label>Type opération : </label>
@@ -66,7 +42,7 @@
           <input type="text" class="form-control" placeholder="ICE" [(ngModel)]="facture.societeSource.ice">
         </div>
 
-        <div class="col-md-4 offset-md-2">
+        <div class="col-md-4">
           <label>Société destination : </label>
           <input type="text" class="form-control" placeholder="ICE" [(ngModel)]="facture.societeDistination.ice">
         </div>
@@ -79,12 +55,12 @@
     <p>  </p>
 
     <div class="card-footer">
-        <button class="btn btn-outline-dark btn-block" (click)="saveFacture(declarationIs, factureListDebit, factureListCredit)">Save</button>
+        <button class="btn btn-outline-dark btn-block" (click)="saveFacture()">Save</button>
       </div>
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button class="mat-raised-button" (click)="close()">Close</button>
+    <button class="mat-raised-button" (click)="closeAndRefresh()">Close</button>
   </mat-dialog-actions>
 
 </div>

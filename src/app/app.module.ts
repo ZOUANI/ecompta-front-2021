@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {NgxPaginationModule} from "ngx-pagination";
 
 import {AppRoutingModule, components} from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,8 +24,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AppComponent,
     PageNotFoundedComponent,
     MenuComponent,
-   components,
-   OurServiceComponent,
+    components,
+    OurServiceComponent,
     DeclarationIsCriteriaComponent,
     DialogFactureComponent,
     DeclarationIsSaveComponent
@@ -36,7 +37,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AppRoutingModule,
     MatDialogModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
