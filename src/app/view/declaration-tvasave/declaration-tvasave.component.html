@@ -1,0 +1,125 @@
+<p> </p>
+<div class="card col-md-6 offset-3" id="card1">
+  <h1>DECLARATION TVA:</h1>
+  <div class="card-body">
+
+    <div class="form-group">
+      <div class="row">
+        <label class="offset-1"><pre>Societe:  </pre></label>
+        <input type="text" class="form-control col-md-3" [(ngModel)]="decltva.societe.ice" >
+        <!--<label class=" offset-2"><pre>Type Declaration TVA:  </pre> </label>
+        <input type="text" class="form-control col-md-3" [(ngModel)]="decltva.typeDeclarationTva.ref">-->
+        <div class="form-check form-check-inline offset-1">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="TDTV1" [(ngModel)]="decltva.typeDeclarationTva.ref">
+          <label class="form-check-label" for="inlineRadio1">Trimestriel</label>
+        </div>
+        <div class="form-check form-check-inline offset-1">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="TDTV2" [(ngModel)]="decltva.typeDeclarationTva.ref">
+          <label class="form-check-label" for="inlineRadio2">Mensuelle</label>
+        </div>
+      </div> <br>
+      <button class="btn btn-primary btn-block col-md-4 offset-4" (click)="test()">OK</button> <br>
+      <div *ngIf="a" class="row">
+        <div class="col-md-6"><label>Annee:</label>
+          <input type="number" class="form-control" [(ngModel)]="decltva.annee"></div>
+        <div *ngIf="b" class="col-md-6">
+          <label>Trim:</label>
+          <input type="number" class="form-control" [(ngModel)]="decltva.trim" >
+        </div>
+        <div *ngIf="c" class="col-md-6">
+          <label>Mois:</label>
+          <input type="number" class="form-control" [(ngModel)]="decltva.mois">
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-block col-md-4 offset-4" *ngIf="a" (click)="trvfacuresandcalcultva()">OK</button>
+  </div>
+</div>
+<p></p>
+<br>
+<div class="card" style="border-color: darkred;background-color: #fafafa;margin: 15px;border-width: 3px;">
+
+  <div class="card-header"> <h4 style="font-weight: bold; font-size: 16px">LES FACTURES:</h4>
+    <button class="btn btn-info col-md-2 offset-10" (click)="openDialog()"><i class="fas fa-plus"></i>Nouveau Facture</button>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="card col-md-6" style="border-color:black;border-width: 2px;">
+        <div class="card-body">
+          <div class="card-title" style="font-weight: bold; font-size: 16px">Factures Ventes:</div>
+          <table class="table">
+            <thead class="thead-dark">
+            <th scope="col">Reference</th>
+            <th scope="col">Mt Hors Taxe</th>
+            <th scope="col">Mt TTC</th>
+            <th scope="col">Mt TVA</th>
+            <th scope="col">Action</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let l of declarationtvavo2.listfacturevente |paginate: {id:'listvente',itemsPerPage: pageSize, currentPage:page, totalItems:declarationtvavo2.listfacturevente.length }; index as i;">
+              <td scope="row">{{l.ref}}</td>
+              <td>{{l.montantHorsTaxe}}</td>
+              <td>{{l.montantTTC}}</td>
+              <td>{{l.montantTVA}}</td>
+              <td>
+                <span (click)="delete1(i,l)"><i class="fa fa-trash btn btn-danger"></i></span>
+                <span (click)="popupupdate(l)"><i class="fa fa-edit btn btn-warning"></i></span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div>
+            <pagination-controls id="listvente" maxSize="5" directionLinks="true" (pageChange)="page=$event"></pagination-controls>
+          </div>
+        </div>
+        <div class="card-footer">
+          <label style="font-weight: bold; font-size: 16px;color: black">TVA Collectée :</label>
+          <input type="number" disabled class="form-control col-md-6" [value]="declarationtvavo2.tvacollecter" style="border-color:black;border-width: 2px;">
+        </div>
+      </div>
+      <div class="card col-md-6" style="border-color:black;border-width: 2px;">
+        <div class="card-body">
+          <div class="card-title" style="font-weight: bold; font-size: 16px">Factures ACHAT:</div>
+          <table class="table">
+            <thead class="thead-dark">
+            <th scope="col">Reference</th>
+            <th scope="col">Mt Hors Taxe</th>
+            <th scope="col">Mt TTC</th>
+            <th scope="col">Mt TVA</th>
+            <th scope="col">Action</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let l of declarationtvavo2.listfactureachat |paginate: {id:'listachat',itemsPerPage: pageSize, currentPage:1, totalItems:declarationtvavo2.listfactureachat.length }; index as i">
+              <td scope="row">{{l.ref}}</td>
+              <td>{{l.montantHorsTaxe}}</td>
+              <td>{{l.montantTTC}}</td>
+              <td>{{l.montantTVA}}</td>
+              <td>
+                <span (click)="delete1(i,l)"><i class="fa fa-trash btn btn-danger"></i></span>
+                <span (click)="popupupdate(l)"><i class="fa fa-edit btn btn-warning"></i></span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div>
+            <pagination-controls id="listachat" maxSize="5" directionLinks="true" (pageChange)="page=$event"></pagination-controls>
+          </div>
+        </div>
+        <div class="card-footer">
+          <label style="font-weight: bold; font-size: 16px;color: black">TVA Déductible :</label>
+          <input type="number" disabled class="form-control col-md-6" [value]="declarationtvavo2.tvadeductible" style="border-color:black;border-width: 2px;">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="offset-4">
+      <label style="font-weight: bold; font-size: 16px;color: red">Différence TVA :</label>
+      <input type="number" disabled class="form-control col-md-6" [value]="declarationtvavo2.differencetva" style="border-color:red;border-width: 2px;">
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-dark btn-block col-md-6 offset-3" (click)="save()">SAVE</button>
+  </div>
+</div>
+
