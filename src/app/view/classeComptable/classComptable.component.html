@@ -1,117 +1,119 @@
-
-  <div class="card-body">
-    <div class="row">
-      <ng-template #content let-c="close" let-d="dismiss">
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title">Insert a Classe Comptable</h4>
-          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <div class="card-header">Class Comptable</div>
-          <div class="col-md-6">
-
-            <div class="form-group">
-              <label>Numero</label>
-              <input type="text" class="form-control" [(ngModel)]="classeComptable.numero" placeholder="reference">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Libelle</label>
-              <input type="text" class="form-control" [(ngModel)]="classeComptable.libelle" placeholder="Libelle">
-            </div>
-          </div>
-
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="c('Save click');saveClass(classeComptable)">Save
-          </button>
-        </div>
-
-
-      </ng-template>
-      <div class="col-md-4" align="center">
-        <button type="button" class="btn btn-primary" (click)="open(content)">+</button>
+<div class="card-body">
+  <div class="row">
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-basic-title"><i><b>Insert a Classe Comptable</b></i></h3>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <ng-template #content1 let-c="close" let-d="dismiss">
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title-2">Insert a Sous Classe Comptable</h4>
-          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <div class="card-header">Sous Classe Comptable</div>
-          <div class="col-md-6">
-
-            <div class="form-group">
-              <label>Numero</label>
-              <input type="text" class="form-control" [(ngModel)]="sousClasseComptable.numero" placeholder="reference">
-            </div>
+      <div class="modal-body">
+        <h2 style="text-align: center">Class Comptable </h2>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Numero :</label>
+            <input type="text" class="form-control" [(ngModel)]="classeComptable.numero" placeholder="numero">
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Libelle</label>
-              <input type="text" class="form-control" [(ngModel)]="sousClasseComptable.libelle" placeholder="Libelle">
-            </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Libelle :</label>
+            <input type="text" class="form-control" [(ngModel)]="classeComptable.libelle" placeholder="libelle">
           </div>
+        </div>
 
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="c('Save click');saveSousClass(sousClasseComptable)">Save
-          </button>
-        </div>
-      </ng-template>
-      <div class="col-md-4" align="center">
-        <button type="button" class="btn btn-primary" [disabled]="classNumero==null" (click)="open(content1)">+</button>
       </div>
-      <ng-template #content2 let-c="close" let-d="dismiss">
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title-3">Insert a Compte Comptable</h4>
-          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <div class="card-header">Compte Comptable</div>
-          <div class="col-md-6">
-
-            <div class="form-group">
-              <label>Code</label>
-              <input type="text" class="form-control" [(ngModel)]="comptecomptable.code" placeholder="reference">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Libelle</label>
-              <input type="text" class="form-control" [(ngModel)]="comptecomptable.libelle" placeholder="Libelle">
-            </div>
-          </div>
-
-
-        </div>
-        <div class="modal-footer">
-          <button type="button"  class="btn btn-outline-dark" (click)="c('Save click');saveCompte(comptecomptable)">Save
-          </button>
-        </div>
-      </ng-template>
-      <div class="col-md-4" align="center">
-        <button type="button" class="btn btn-primary"  [disabled]="sousClassNumero==null"  (click)="open(content2)">+</button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click');saveClass(classeComptable)">Save
+        </button>
       </div>
+
+
+    </ng-template>
+    <div class="col-md-4" align="center">
+      <button type="button" class="btn btn-outline-primary" (click)="open(content)">+</button>
+    </div>
+    <ng-template #content1 let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-basic-title-2"><i><b>Insert a Sous Classe Comptable</b></i></h3>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <h2 style="text-align: center">Sous Classe Comptable </h2>
+        <div class="col-md-6">
+
+          <div class="form-group">
+            <label>Numero</label>
+            <input type="text" class="form-control" [(ngModel)]="sousClasseComptable.numero" placeholder="numero">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Libelle</label>
+            <input type="text" class="form-control" [(ngModel)]="sousClasseComptable.libelle" placeholder="libelle">
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click');saveSousClass(sousClasseComptable)">
+          Save
+        </button>
+      </div>
+    </ng-template>
+    <div class="col-md-4" align="center">
+      <button type="button" class="btn btn-outline-primary" [disabled]="classNumero==null" (click)="open(content1)">+
+      </button>
+    </div>
+    <ng-template #content2 let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-basic-title-3"><i><b>Insert a Compte Comptable</b></i></h3>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <h2 style="text-align: center">Compte Comptable</h2>
+        <div class="col-md-6">
+
+          <div class="form-group">
+            <label>Code</label>
+            <input type="text" class="form-control" [(ngModel)]="comptecomptable.code" placeholder="numero">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Libelle</label>
+            <input type="text" class="form-control" [(ngModel)]="comptecomptable.libelle" placeholder="libelle">
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click');saveCompte(comptecomptable)">Save
+        </button>
+      </div>
+    </ng-template>
+    <div class="col-md-4" align="center">
+      <button type="button" class="btn btn-outline-primary" [disabled]="sousClassNumero==null" (click)="open(content2)">
+        +
+      </button>
     </div>
   </div>
+</div>
 
 <div class="row">
   <div class="col-md-4">
     <div class="card">
-      <table class="table table-striped table-class" id= "table-id">
+      <table class="table table-striped table-class" id="table-id">
         <thead>
         <th><i>NUMERO</i></th>
         <th><i>LIBELLE</i></th>
@@ -122,21 +124,24 @@
           <td>{{c.numero}}</td>
           <td>{{c.libelle}}</td>
           <td>
-            <button type="button" class="btn btn-outline-secondary btn-sm" style="width: 80px;margin-top: 2px" (click)="displaySousClasse(c.numero);classNumero=c.numero">
-              afficher
+            <button type="button" class="btn btn-outline-secondary btn-sm" style="width: 80px;margin-top: 2px"
+                    (click)="displaySousClasse(c.numero);classNumero=c.numero">
+              display
             </button>
-            <button type="button" class="btn btn-outline-danger btn-sm" style="width: 80px;margin-top: 2px" (click)="deleteClass(c.numero)">delete</button>
+            <button type="button" class="btn btn-outline-danger btn-sm" style="width: 80px;margin-top: 2px"
+                    (click)="deleteClass(c.numero)">delete
+            </button>
           </td>
         </tr>
 
         </tbody>
       </table>
 
-  </div>
+    </div>
   </div>
   <div class="col-md-4">
     <div class="card">
-      <table class="table table-striped table-class" id= "table-id1">
+      <table class="table table-striped table-class" id="table-id1">
         <thead>
         <th><i>NUMERO</i></th>
         <th><i>LIBELLE</i></th>
@@ -147,8 +152,12 @@
           <td>{{s.numero}}</td>
           <td>{{s.libelle}}</td>
           <td>
-            <button type="button" class="btn btn-outline-secondary btn-sm" style="width: 80px;margin-top: 2px" (click)="displayCompte(s.numero);sousClassNumero=s.numero">show</button>
-            <button type="button" class="btn btn-outline-danger btn-sm" style="width: 80px;margin-top: 2px"  (click)="deleteSous(s.numero)">delete</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" style="width: 80px;margin-top: 2px"
+                    (click)="displayCompte(s.numero);sousClassNumero=s.numero">display
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-sm" style="width: 80px;margin-top: 2px"
+                    (click)="deleteSous(s.numero)">delete
+            </button>
           </td>
         </tr>
 
@@ -158,7 +167,7 @@
   </div>
   <div class="col-md-4">
     <div class="card">
-      <table class="table table-striped table-class" id= "table-id2">
+      <table class="table table-striped table-class" id="table-id2">
         <thead>
         <th style="text-align: center"><i>NUMERO</i></th>
         <th style="text-align: center"><i>LIBELLE</i></th>
@@ -169,7 +178,9 @@
           <td>{{compte.code}}</td>
           <td>{{compte.libelle}}</td>
           <td>
-            <button type="button" class="btn btn-outline-danger"style="width: 80px;margin-top: 2px" (click)="deleteCompte(compte.code)">delete</button>
+            <button type="button" class="btn btn-outline-danger" style="width: 80px;margin-top: 2px"
+                    (click)="deleteCompte(compte.code)">delete
+            </button>
           </td>
         </tr>
 
