@@ -41,6 +41,7 @@ import { DeclarationTvasaveComponent } from './view/declaration-tvasave/declarat
   imports: [
     BrowserModule,
     HttpClientModule,
+
     AppRoutingModule,
     MatDialogModule,
     NgxPaginationModule,
