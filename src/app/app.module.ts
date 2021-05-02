@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {NgxPaginationModule} from "ngx-pagination";
 
 import {AppRoutingModule, components} from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +15,6 @@ import {FormsModule} from "@angular/forms";
 import { DeclarationIsSaveComponent } from './view/declaration-is-save/declaration-is-save.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from 'ngx-pagination';
-import {DeclarationTva} from "./controller/model/declaration-tva.model";
 import {DecltvacriteriaComponent} from "./view/decltvacriteria/decltvacriteria.component";
 import {PopupFactureComponent} from "./view/popup-facture/popup-facture.component";
 import { DeclarationTvasaveComponent } from './view/declaration-tvasave/declaration-tvasave.component';

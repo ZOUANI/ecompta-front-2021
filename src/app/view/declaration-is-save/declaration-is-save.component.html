@@ -17,20 +17,20 @@
       <div class="row">
         <div class="col-sm-6">
             <div class="card-body">
-              <h5 class="card-title" style="font-weight: bold; font-size: 16px">Factures -crédit-  <span id="factc" class="btn btn-secondary fa fa-plus" (click)="creerFactCred()"></span></h5>
+              <h5 class="card-title" >Factures -CRÉDIT-  <span><button type="button" class="circle-btnplus fa fa-plus btn btn-primary"  (click)="creerFactCred()"></button></span></h5>
               <table class="table">
                 <thead class="thead-dark">
                 <tr>
                   <th scope="col">Libellé</th>
-                  <th scope="col">MontantHT</th>
-                  <th scope="col">Source</th>
-                  <th scope="col">Destination</th>
+                  <th scope="col">Montant HT</th>
+                  <th scope="col">S.Source</th>
+                  <th scope="col">S.Destination</th>
                   <th scope="col">Action</th>
                   <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let fc of declarationIsObject.factureC, index as i">
+                <tr *ngFor="let fc of declarationIsObject.factureC |paginate: {id:'listFactC',itemsPerPage: pageSize, currentPage:page, totalItems:declarationIsObject.factureC.length }; index as i">
                   <th scope="row">{{fc.ref}}</th>
                   <td>{{fc.montantHorsTaxe}}</td>
                   <td>{{fc.societeSource.ice}}</td>
@@ -40,6 +40,9 @@
                 </tr>
                 </tbody>
               </table>
+              <div>
+                <pagination-controls id="listFactC" maxSize="5" directionLinks="true" (pageChange)="page=$event"></pagination-controls>
+              </div>
             </div>
             <!--  table 2 -->
           <p> </p>
@@ -47,20 +50,20 @@
         </div>
         <div class="col-sm-6">
             <div class="card-body">
-              <h5 class="card-title" style="font-weight: bold; font-size: 16px">Factures -débit-  <span id="factd" class="btn btn-secondary fa fa-plus" (click)="creerFactDeb()"></span></h5>
+              <h5 class="card-title" >Factures -DÉBIT-  <span><button type="button" class="circle-btnplus fa fa-plus btn btn-primary"  (click)="creerFactDeb()"></button></span></h5>
               <table class="table">
                 <thead class="thead-dark">
                 <tr>
                   <th scope="col">Libellé</th>
-                  <th scope="col">MontantHT</th>
-                  <th scope="col">Source</th>
-                  <th scope="col">Destination</th>
+                  <th scope="col">Montant HT</th>
+                  <th scope="col">S.Source</th>
+                  <th scope="col">S.Destination</th>
                   <th scope="col">Action</th>
                   <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let fd of declarationIsObject.factureD, index as i">
+                <tr *ngFor="let fd of declarationIsObject.factureD |paginate: {id:'listFactD',itemsPerPage: pageSize, currentPage:page, totalItems:declarationIsObject.factureD.length }; index as i">
                   <th scope="row">{{fd.ref}}</th>
                   <td>{{fd.montantHorsTaxe}}</td>
                   <td>{{fd.societeSource.ice}}</td>
@@ -70,6 +73,9 @@
                 </tr>
                 </tbody>
               </table>
+              <div>
+                <pagination-controls id="listFactD" maxSize="5" directionLinks="true" (pageChange)="page=$event"></pagination-controls>
+              </div>
             </div>
         </div>
       </div>
@@ -78,7 +84,7 @@
       <div class="row">
         <div class="col-md-2 offset-md-2"><label>Total hors taxe gain :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIsObject.totalHTGain">
+            <input type="number" disabled class="form-control" [value]="declarationIsObject.totalHTGain">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -88,7 +94,7 @@
 
         <div class="col-md-2 offset-md-4"><label>Total hors taxe charge :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIsObject.totalHTCharge">
+            <input type="number" disabled class="form-control" [value]="declarationIsObject.totalHTCharge">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -99,7 +105,7 @@
 
         <div class="col-md-3"><label>Résultat fiscal :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIsObject.totalHTDiff">
+            <input type="number" disabled class="form-control" [value]="declarationIsObject.totalHTDiff">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -107,7 +113,7 @@
         </div>
         <div class="col-md-3"><label>Cotisation minimale :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIsObject.montantISCalcule">
+            <input type="number" disabled class="form-control" [value]="declarationIsObject.montantISCalcule">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -115,7 +121,7 @@
         </div>
         <div class="col-md-3"><label>Montant IS calculé :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIsObject.montantISCalcule">
+            <input type="number" disabled class="form-control" [value]="declarationIsObject.montantISCalcule">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -123,22 +129,18 @@
         </div>
         <div class="col-md-3"><label>Montant IS payé :</label>
           <div class="input-group">
-            <input type="text" disabled class="form-control" [value]="declarationIsObject.montantISPaye">
+            <input type="number" disabled class="form-control" [value]="declarationIsObject.montantISPaye">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
           </div>
         </div>
       </div>
-      <!--
-      <div class="col-md-4 offset-md-4"><label>Montant IS payé:</label>
-        <input type="text" disabled class="form-control" placeholder="Montant IS" [value]="declarationIs.montantISPaye">
-      </div> -->
       <p> </p>
     </div>
     <div class="card-footer">
-      <button class="btn btn-primary btn-block fa fa-download"></button>
-      <button type="button" class="btn btn-primary btn-block btn-lg" (click)="save()">SAVE</button>
+      <div class="downl"><button class="btn-downl btn btn-primary fa fa-download"></button></div>
+      <div class="save"><button class="btn-save btn btn-primary" (click)="save()">SAVE</button></div>
     </div>
   </div>
 </div>

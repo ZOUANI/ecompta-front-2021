@@ -14,6 +14,7 @@ import {DeclarationIsObject} from "../../controller/model/declaration-is-object.
 })
 export class DialogFactureComponent implements OnInit {
 
+
   constructor(public dialogRef: MatDialogRef<DialogFactureComponent>, private declarationIsService: DeclarationISService){}
 
   close() {

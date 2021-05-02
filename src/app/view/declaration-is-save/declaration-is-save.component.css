@@ -3,6 +3,10 @@
   height: 50px;
   margin-left: 670px;
 }
+.card-title{
+  font-weight: bold;
+  font-size: 16px;
+}
 #card1{
   border-color: #df0c1d;
   border-radius: 16px;
@@ -35,4 +39,25 @@ h1{
 }
 .col-md-2 > label, .col-md-3 > label{
   font-weight: bold;
+}
+.circle-btnplus{
+  margin-left: 9px;
+  border-radius: 50%;
+  height:33px;
+  width: 37px;
+  font-size: 16px;
+}
+
+.btn-downl, .btn-save {
+  width: 500px;
+  height: 45px;
+  font-size: 25px;
+}
+.downl, .save{
+  width: 500px;
+  height: 45px;
+  padding-left: 500px;
+}
+.save{
+  padding-top: 5px;
 }

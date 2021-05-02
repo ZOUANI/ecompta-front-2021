@@ -23,10 +23,10 @@ export class DeclarationISService {
   public afficherDecIS(): DeclarationIsObject{
     this.http.post<DeclarationIsObject>(environment.baseUrlGestionComptabilite + '/declarationIS/frontEnd/', this.declarationIsObject).subscribe(
       data => {
-        console.log('c bon');
+        console.log('Recherche bien effectué');
         this.declarationIsObject = data;
       }, error => {
-        console.log('noooo');
+        console.log('Recherche NON effectué');
       }
     );
     this.facture = null;
@@ -38,10 +38,10 @@ export class DeclarationISService {
       data => {
         console.log(data);
         if (data > 0){
-          console.log('buenoo');
+          console.log('DeclarationIS BIEN enregistrée');
         }
       }, error => {
-        console.log('erura');
+        console.log('Erreur !!! DeclarationIS NON enregistrée');
       }
     );
     return this.declarationIs;

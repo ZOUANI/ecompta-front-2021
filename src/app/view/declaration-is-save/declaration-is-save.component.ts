@@ -13,6 +13,9 @@ import {DeclarationIsObject} from "../../controller/model/declaration-is-object.
 })
 export class DeclarationIsSaveComponent implements OnInit {
 
+  public page = 1;
+  public pageSize = 2;
+
   constructor(private declarationIsService: DeclarationISService, private matDialog: MatDialog) { }
 
   openDialog() {
@@ -22,11 +25,13 @@ export class DeclarationIsSaveComponent implements OnInit {
 
   public creerFactCred(){
     this.facture.typeOperation = 'credit';
+    this.facture.societeSource.ice = this.declarationIsObject.iceSociete;
     this.openDialog();
   }
 
   public creerFactDeb(){
     this.facture.typeOperation = 'debit';
+    this.facture.societeSource.ice = this.declarationIsObject.iceSociete;
     this.openDialog();
   }
 
