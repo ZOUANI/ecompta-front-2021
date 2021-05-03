@@ -12,6 +12,6 @@ export class DeclarationIS {
   public montantISCalcule: number;
   public montantISPaye: number;
   public societe = new Societe();
-  public tauxIS = new TauxIS;
-  public facture = new Array<Facture>() ;
+  public tauxIS = new TauxIS();
+  public facture = new Array<Facture>();
 }
