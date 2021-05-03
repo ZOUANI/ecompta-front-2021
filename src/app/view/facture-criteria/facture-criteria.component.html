@@ -1,0 +1,80 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="form-group col-md-4">
+            <label>iceSource</label>
+            <input type="text" class="form-control" [(ngModel)]="facturevo.refSocieteSource" >
+          </div>
+          <div class="form-group col-md-4 ">
+            <label>type d'Operation</label><br>
+            <select class="w-100 h-50 " [(ngModel)]="facturevo.typOperation">
+              <option class="container-fluid" >ACHAT</option>
+              <option class="container-fluid" >VENDRE</option>
+            </select>
+          </div>
+          <div class=" col-md-4">
+            <label class="h-25"></label>
+            <button class="btn btn-outline-success btn-block"  (click)="Criteria()"  >search</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-header">
+        <h2>Les statistiques</h2>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover table-striped">
+          <thead>
+          <th>Ref</th>
+          <th>Societe Source</th>
+          <th>Societe Distination</th>
+          <th>libelle</th>
+          <th>MHT</th>
+          <th>tva</th>
+          <th>MTVA</th>
+          <th>MTTC</th>
+          <th>Annee</th>
+          <th>mois</th>
+          <th>trim</th>
+          <th>Operation</th>
+          <th>comptable</th>
+
+
+
+
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of facturescriteria; index as i ">
+            <td>{{c.ref}}</td>
+            <td>{{c.societeSource.ice}}</td>
+            <td>{{c.societeDistination.ice}}</td>
+            <td>{{c.libelle}}</td>
+            <td>{{c.montantHorsTaxe}}<i>$</i></td>
+            <td>{{c.tva.valeur}}<i>%</i></td>
+            <td>{{c.montantTVA}}<i>$</i></td>
+            <td>{{c.montantTTC}}<i>$</i></td>
+            <td>{{c.annee}}</td>
+            <td>{{c.mois}}</td>
+            <td>{{c.trim}}</td>
+            <td>{{c.typeOperation}}</td>
+            <td>{{c.classComptable.numero}}</td>
+
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

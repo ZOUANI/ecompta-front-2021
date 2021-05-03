@@ -91,6 +91,7 @@ export class PopupService {
     Myclonefacture.montantHorsTaxe = facture.montantHorsTaxe;
     Myclonefacture.classComptable = facture.classComptable;
     Myclonefacture.declarationIS = facture.declarationIS;
+    Myclonefacture.declarationIR = facture.declarationIR;
     Myclonefacture.declarationTva = facture.declarationTva;
     Myclonefacture.societeDistination = facture.societeDistination;
     Myclonefacture.societeSource = facture.societeSource;

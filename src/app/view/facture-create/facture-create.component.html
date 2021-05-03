@@ -1,0 +1,60 @@
+<div class="card container" >
+  <div class="card-header  " >
+    <h2 >Insertion d'une facture</h2>
+  </div>
+
+  <div class="card-body " >
+<div class="row">
+    <div class="form-group col-md-5 m-md-3">
+      <label>Reference</label>
+      <input  type="text" class="form-control" [(ngModel)]="facture.ref" >
+    </div>
+
+    <div class="form-group col-md-5 m-md-3">
+      <label>Libelle</label>
+      <input type="text" class="form-control" [(ngModel)]="facture.libelle"  >
+    </div>
+
+    <div class="form-group col-md-5 m-md-3">
+      <label>montantHorsTaxe</label>
+      <input type="number" class="form-control"  [(ngModel)]="facture.montantHorsTaxe">
+    </div>
+    <div class="form-group col-md-5 m-md-3">
+      <label>DateOperation</label>
+      <input type="date" class="form-control" [(ngModel)]="facture.dateOperation"  >
+    </div>
+  <div class="form-group col-md-5 m-md-3 ">
+    <label>class comptable</label>
+    <input type="text" class="form-control" [(ngModel)]="facture.classComptable.numero"  >
+  </div>
+    <div class="form-group col-md-5 m-md-3">
+      <label>tva</label>
+      <input type="text" class="form-control" [(ngModel)]="facture.tva.ref" >
+    </div>
+    <div class="form-group col-md-5 m-md-3">
+      <label>Societe Source</label>
+      <input type="text" class="form-control" [(ngModel)]="facture.societeSource.ice" >
+    </div>
+    <div class="form-group col-md-5 m-md-3">
+      <label>Societe Distination</label>
+      <input type="text" class="form-control"[(ngModel)]="facture.societeDistination.ice"  >
+    </div>
+  <div class="form-group col-md-5 m-md-3 ">
+    <label>type d'Operation</label><br>
+    <select class="w-100 h-50 " [(ngModel)]="facture.typeOperation">
+      <option  >ACHAT</option>
+      <option  >VENDRE</option>
+    </select>
+  </div>
+
+
+   </div>
+
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-outline-success btn-block"  (click)="save()"  ><i class="fa fa-send"></i>save</button>
+
+  </div>
+
+</div>

@@ -1,0 +1,24 @@
+h2{
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: center;
+  color: #df0c1d;
+
+}
+label{
+  font-size: 25px;
+  font-weight: normal;
+  color: #df0c1d;
+
+
+}
+.card{
+  border-color: forestgreen;
+
+}
+input{
+  border-color: forestgreen;
+}
+select{
+  border-color: forestgreen;
+}

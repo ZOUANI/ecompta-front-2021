@@ -3,6 +3,7 @@ import {DeclarationIS} from './declaration-is.model';
 import {Tva} from './tva.model';
 import {DeclarationTva} from "./declaration-tva.model";
 import {ClasseComptable} from "./classeComptable.model";
+import {DeclarationIR} from "./declaration-ir.model";
 
 export class Facture {
   public id: number;
@@ -22,4 +23,5 @@ export class Facture {
   public classComptable = new ClasseComptable();
   public  declarationIS = new DeclarationIS();
   public declarationTva = new DeclarationTva();
+  public declarationIR = new DeclarationIR();
 }

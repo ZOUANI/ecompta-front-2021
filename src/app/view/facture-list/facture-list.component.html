@@ -1,0 +1,111 @@
+<div class="card container-fluid" [hidden]="!etat">
+
+  <div class="card-body">
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label>Reference</label>
+        <input [disabled]="etat" type="text" class="form-control" [(ngModel)]="facture.ref" >
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>Libelle</label>
+        <input type="text" class="form-control" [(ngModel)]="facture.libelle"  >
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>montantHorsTaxe</label>
+        <input type="number" class="form-control"  [(ngModel)]="facture.montantHorsTaxe">
+      </div>
+      <div class="form-group col-md-4">
+        <label>DateOperation</label>
+        <input type="date" class="form-control" [(ngModel)]="facture.dateOperation"  >
+      </div>
+      <div class="form-group col-md-4">
+        <label>class comptable</label>
+        <input type="text" class="form-control" [(ngModel)]="facture.classComptable.numero"  >
+      </div>
+      <div class="form-group col-md-4">
+        <label>tva</label>
+        <input type="text" class="form-control" [(ngModel)]="facture.tva.ref" >
+      </div>
+      <div class="form-group col-md-4">
+        <label>Societe Source</label>
+        <input type="text" class="form-control" [(ngModel)]="facture.societeSource.ice" >
+      </div>
+      <div class="form-group col-md-4">
+        <label>Societe Distination</label>
+        <input type="text" class="form-control"[(ngModel)]="facture.societeDistination.ice"  >
+      </div>
+      <div class="form-group col-md-4 ">
+        <label>type d'Operation</label><br>
+        <select class="w-100 h-50 " [(ngModel)]="facture.typeOperation">
+          <option  >ACHAT</option>
+          <option  >VENDRE</option>
+        </select>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-outline-warning btn-block"   (click)="updatBackend()" > <i class="fa fa-refresh "></i> Update</button>
+
+
+
+  </div>
+
+</div>
+<div class="card container-fluid">
+  <div class="card-header">
+  <h2>liste des factures</h2>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-striped">
+      <thead>
+      <th>Ref</th>
+      <th>Societe Source</th>
+      <th>Societe Distination</th>
+      <th>libelle</th>
+      <th>MHT</th>
+      <th>tva</th>
+      <th>MTVA</th>
+      <th>MTTC</th>
+      <th>Annee</th>
+      <th>mois</th>
+      <th>trim</th>
+      <th>Operation</th>
+      <th>comptable</th>
+      <th>action</th>
+
+
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of factures; index as i ">
+        <td>{{c.ref}}</td>
+        <td>{{c.societeSource.ice}}</td>
+        <td>{{c.societeDistination.ice}}</td>
+        <td>{{c.libelle}} </td>
+        <td>{{c.montantHorsTaxe}}<i>$</i></td>
+        <td>{{c.tva.valeur}}<i>%</i></td>
+        <td>{{c.montantTVA}}<i>$</i></td>
+        <td>{{c.montantTTC}}<i>$</i></td>
+        <td>{{c.annee}}</td>
+        <td>{{c.mois}}</td>
+        <td>{{c.trim}}</td>
+        <td>{{c.typeOperation}}</td>
+        <td>{{c.classComptable.numero}}</td>
+        <td><span (click)="delete(c)"><i class="fa fa-trash btn btn-danger"></i></span>
+          <span (click)="updateFront(i,c)" ><i class="fa fa-edit btn btn-dark"></i></span></td>
+
+
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+
+
