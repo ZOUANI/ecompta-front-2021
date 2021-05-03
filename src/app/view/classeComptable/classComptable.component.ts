@@ -49,6 +49,7 @@ export class ClassComptableComponent implements OnInit {
   }
 
   set classNumero(value: number) {
+    this.sousClassNumero = null;
     this._classNumero = value;
     console.log(this.classNumero);
   }
