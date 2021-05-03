@@ -136,6 +136,9 @@ export class FactureService {
     myClone.societeSource.ice = facture.societeSource.ice;
     myClone.societeDistination.ice = facture.societeDistination.ice;
     myClone.classComptable.numero = facture.classComptable.numero;
+    myClone.declarationIR= facture.declarationIR;
+    myClone.declarationIS= facture.declarationIS;
+    myClone.declarationTva= facture.declarationTva;
     return myClone;
   }
 
