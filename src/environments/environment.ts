@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   baseUrlGestionComptabilite: 'http://localhost:8036/gestion-comptabilite'
+
 };
 
 /*

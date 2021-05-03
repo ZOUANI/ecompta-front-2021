@@ -11,8 +11,9 @@ import {DeclarationIRComponent} from './view/LesServices/declaration-ir/declarat
 import {DeclarationISComponent} from './view/LesServices/declaration-is/declaration-is.component';
 import {FactureComponent} from './view/LesServices/facture/facture.component';
 import {CreationComponent} from './view/LesServices/creation/creation.component';
+import {ClassComptableComponent} from './view/classeComptable/classComptable.component';
 
-export const components =[HomePageComponent, AboutUsComponent, CreationComponent, LiquidationComponent, DeclarationTVAComponent, DeclarationIRComponent, DeclarationISComponent, FactureComponent];
+export const components =[HomePageComponent, AboutUsComponent, CreationComponent, LiquidationComponent, DeclarationTVAComponent, DeclarationIRComponent, DeclarationISComponent, FactureComponent , ClassComptableComponent];
 
 const routes: Routes = [
   {path: '' , component: components[0]},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'declaration-ir' , component: components[5]},
   {path: 'declaration-is' , component: components[6]},
   {path: 'facture' , component: components[7]},
+  {path: 'classe-comptable' , component: components[8]},
   //{path: '**' , component: PageNotFoundedComponent}
 
 

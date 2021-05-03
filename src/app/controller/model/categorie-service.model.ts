@@ -1,6 +1,5 @@
 export class CategorieService {
 
-
   public id:number;
   public titre:string;
   public description:string;
