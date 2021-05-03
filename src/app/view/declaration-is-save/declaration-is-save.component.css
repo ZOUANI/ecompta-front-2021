@@ -28,6 +28,7 @@ h1{
 #cardFact{
   border-color: darkred;
   background-color: #fafafa;
+  height: 370px;
 }
 
 .circle-btn button{

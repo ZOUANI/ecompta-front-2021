@@ -100,7 +100,6 @@ export class PopupService {
     Myclonefacture.annee = facture.annee;
     Myclonefacture.mois = facture.mois;
     Myclonefacture.trim = facture.trim;
-    //Myclonefacture.declarationIR = facture.declarationIR;
     return Myclonefacture;
   }
 }

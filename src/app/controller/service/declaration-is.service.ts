@@ -120,7 +120,7 @@ export class DeclarationISService {
     myCloneF.classComptable = facture.classComptable;
     myCloneF.declarationIS = facture.declarationIS;
     myCloneF.declarationTva = facture.declarationTva;
-    //myCloneF.declarationIR = facture.declarationIR;
+    myCloneF.declarationIR = facture.declarationIR;
     return myCloneF;
   }
 

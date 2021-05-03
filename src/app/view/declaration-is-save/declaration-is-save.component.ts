@@ -14,6 +14,7 @@ import {DeclarationIsObject} from "../../controller/model/declaration-is-object.
 export class DeclarationIsSaveComponent implements OnInit {
 
   public page = 1;
+  public page2 = 1;
   public pageSize = 2;
 
   constructor(private declarationIsService: DeclarationISService, private matDialog: MatDialog) { }
