@@ -63,7 +63,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let fd of declarationIsObject.factureD |paginate: {id:'listFactD',itemsPerPage: pageSize, currentPage:page, totalItems:declarationIsObject.factureD.length }; index as i">
+                <tr *ngFor="let fd of declarationIsObject.factureD |paginate: {id:'listFactD',itemsPerPage: pageSize, currentPage:1, totalItems:declarationIsObject.factureD.length }; index as i">
                   <th scope="row">{{fd.ref}}</th>
                   <td>{{fd.montantHorsTaxe}}</td>
                   <td>{{fd.societeSource.ice}}</td>
@@ -140,7 +140,7 @@
     </div>
     <div class="card-footer">
       <div class="downl"><button class="btn-downl btn btn-primary fa fa-download"></button></div>
-      <div class="save"><button class="btn-save btn btn-primary" (click)="save()">SAVE</button></div>
+      <div class="save"><button class="btn-save btn btn-primary" (click)="saveDeclIS()">SAVE</button></div>
     </div>
   </div>
 </div>

@@ -57,9 +57,10 @@ export class DeclarationIsSaveComponent implements OnInit {
   get facture(): Facture {
     return this.declarationIsService.facture;
   }
-  public save(){
-    return this.declarationIsService.save();
+  public saveDeclIS(){
+    return this.declarationIsService.saveDeclIS();
   }
+
   ngOnInit(): void {
   }
 

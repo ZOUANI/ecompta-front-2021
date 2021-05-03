@@ -4,7 +4,7 @@ import {Facture} from '../model/facture.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {DeclarationIsObject} from "../model/declaration-is-object.model";
-import {Observable} from "rxjs";
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,7 @@ export class DeclarationISService {
   private _declarationIs: DeclarationIS;
   private _declarationIsObject: DeclarationIsObject;
   private _facture: Facture;
-  public _index: number;
-
+  public exist: boolean;
 
 
   constructor(private http: HttpClient) { }
@@ -33,12 +32,12 @@ export class DeclarationISService {
     return this.declarationIsObject;
   }
 
-  public save(): DeclarationIS{
+  public saveDeclIS(): DeclarationIS{
     this.http.post<number>(environment.baseUrlGestionComptabilite + '/declarationIS/', this.declarationIs).subscribe(
       data => {
         console.log(data);
         if (data > 0){
-          console.log('DeclarationIS BIEN enregistrée');
+          console.log('DeclarationIS BIEN enregistrée ');
         }
       }, error => {
         console.log('Erreur !!! DeclarationIS NON enregistrée');
@@ -48,17 +47,39 @@ export class DeclarationISService {
   }
 
   public saveFacture(){
+    console.log('savF');
+    if (this.facture.id == null){
+      console.log('Ref null -> save');
       this.http.post<number>(environment.baseUrlGestionComptabilite + '/facture/', this.facture).subscribe(
         data =>{
-          console.log('data = ' + data);
+          console.log('data Save = ' + data);
+          if (data == -2 || data == -1){
+            alert('Declaration IS déjà enregistrée');
+          }
           if (data > 0){
             console.log('facture bien enregistrée');
+            this.facture = null;
           }
         }, error => {
           console.log('facture NON enregistrée');
+          alert('facture NON enregistrée');
         }
       );
-      this.facture = null;
+    }
+    else {
+      console.log('updF');
+      this.http.put<number>(environment.baseUrlGestionComptabilite +'/facture/', this.facture).subscribe(
+        data => {
+          console.log('data Update = '+data);
+          if (data > 0){
+            console.log('facture BIEN modifiée');
+            this.facture = null;
+          }
+        }, error => {
+          console.log('facture NON modifiée');
+        }
+      );
+    }
   }
 
   public deleteFact(index: number, fact:Facture ){
@@ -80,30 +101,26 @@ export class DeclarationISService {
     this.facture = this.cloneFacture(f);
   }
 
-  public updateFact(){
-    this.http.put<number>(environment.baseUrlGestionComptabilite +'/facture/', this.facture).subscribe(
-      data => {
-        console.log('data = '+data);
-        if (data > 0){
-          console.log('facture BIEN modifiée');
-        }
-      }, error => {
-        console.log('facture NON modifiée');
-      }
-    );
-  }
-
   public cloneFacture(facture: Facture): Facture{
     let myCloneF = new Facture();
+    myCloneF.id = facture.id;
     myCloneF.ref = facture.ref;
-    myCloneF.typeOperation = facture.typeOperation;
     myCloneF.libelle = facture.libelle;
-    myCloneF.montantHorsTaxe = facture.montantHorsTaxe;
+    myCloneF.typeOperation = facture.typeOperation;
     myCloneF.dateOperation = facture.dateOperation;
+    myCloneF.montantHorsTaxe = facture.montantHorsTaxe;
+    myCloneF.montantTVA = facture.montantTVA;
+    myCloneF.montantTTC = facture.montantTTC;
+    myCloneF.annee = facture.annee;
+    myCloneF.mois = facture.mois;
+    myCloneF.trim = facture.trim;
     myCloneF.societeSource = facture.societeSource;
     myCloneF.societeDistination = facture.societeDistination;
     myCloneF.tva = facture.tva;
     myCloneF.classComptable = facture.classComptable;
+    myCloneF.declarationIS = facture.declarationIS;
+    myCloneF.declarationTva = facture.declarationTva;
+    //myCloneF.declarationIR = facture.declarationIR;
     return myCloneF;
   }
 
@@ -139,4 +156,5 @@ export class DeclarationISService {
   set declarationIsObject(value: DeclarationIsObject) {
     this._declarationIsObject = value;
   }
+
 }

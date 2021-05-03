@@ -16,10 +16,10 @@ export class Facture {
   public montantTTC: number;
   public montantTVA: number;
   public typeOperation: string;
-  public societeSource = new Societe;
-  public societeDistination = new Societe;
+  public societeSource = new Societe();
+  public societeDistination = new Societe();
   public tva = new Tva;
   public classComptable = new ClasseComptable();
-  public  declarationIS = new DeclarationIS;
+  public  declarationIS = new DeclarationIS();
   public declarationTva = new DeclarationTva();
 }
