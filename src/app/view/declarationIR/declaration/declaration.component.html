@@ -1,0 +1,153 @@
+<script src="../controller/service/declaration.service.ts"></script>
+
+<div class="card mx-5 my-3 ">
+  <div class=" text-center card-header">Cree une declaration IR </div>
+  <div class="card-body">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label  >Reference :</label>
+        <input class=" form-control" type="text" [(ngModel)]="declarationIR.ref">
+      </div>
+      <div class="form-group  col-md-3">
+        <label  >ICE de Societe :</label>
+        <input class="form-control" type="text" [(ngModel)]="societe.ice">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Mois :</label>
+        <input class="form-control" type="number" [(ngModel)]="declarationIR.mois">
+      </div>
+      <div class="form-group col-md-3">
+        <label >Annee :</label>
+        <input class="form-control" type="number" [(ngModel)]="declarationIR.annee">
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+  </div>
+  <div class="card-footer text-center"> <button class="btn btn-primary mx-2 pi pi-save click " (click)="saveDeclarationIR(declarationIR)"><p> Enregistrer</p></button> <button  class="btn btn-success mx-2  bi bi-list-ul click " (click)="simuler(declarationIR)"><p>Cree les Declaration IR Employe</p></button>
+   </div>
+</div>
+<!--<div class="card m-5">
+  <div class="card-header text-center">La mis a jour du Salaire D'employe</div>
+  <div class="card-body">
+    <div class="form">
+      <div class="form-group">
+        <label >Le nouveau Salaire :</label>
+        <input type="number" class="form-control" [(ngModel)]="employe.salaire">
+      </div>
+      <div class="card-footer text-center"><button type="button" class="btn btn-danger" (click)="updateMontantEmploye(employe)">Update</button></div>
+
+    </div>
+  </div>
+</div>-->
+  <div class="card mx-5 my-3">
+    <div class="card-header text-center">Les employe de Societe d'ice {{iceSociete}}</div>
+    <div class="body">
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+
+          <th scope="col">CIN</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Salaire</th>
+          <th class="pl-4">Action</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let c of employes;index as i;">
+
+
+          <td>{{c.cin}}</td>
+          <td>{{c.prenom}}</td>
+          <td>{{c.nom}}</td>
+          <td>{{c.salaire}}</td>
+          <td >
+            <ngbd-modal-component (click)="getEmployeClicked(c,i)" class="mx-2"></ngbd-modal-component>
+            <ngbd-modal-options (click)="selectDeclarationIREmploye(c,i)"></ngbd-modal-options>
+            <button class="btn btn-danger btn-sm fa fa-trash mx-2 " (click)="deleteDeclarationIREmploye(c,i)"></button></td>
+
+
+
+
+          <td>
+
+
+          </td>
+
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer text-center bottom">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">DH</span>
+        <input type="text" pInputText value="{{declarationIR.total}}"  disabled>
+
+      </div>
+      <button type="button" class="btn btn-outline-danger mx-2 bottom bi bi-save2-fill click" (click)="SaveModidfication(declarationIR)"> <p> Enregister la modification</p></button>
+
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+<!--
+<div class="card m-5">
+  <div class="card-header text-center" >Les Declarations IR Employes</div>
+  <div class="card-body">
+
+
+
+
+    <table class="table">
+      <thead class="thead-dark  ">
+      <tr>
+        <th scope="col">CIN</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Salaire Brut</th>
+        <th scope="col">Salaire Net</th>
+        <th scope="col">Montant IR</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let d of declarationIREmployes;index as i">
+        <td>{{d.employe.cin}}</td>
+        <td>{{d.employe.prenom}}</td>
+        <td>{{d.salaireBrut}}</td>
+        <td>{{d.salaireNet}}</td>
+        <td>{{d.montantIR}}</td>
+        <td><button class="btn btn-danger btn-sm fa fa-trash " (click)="deleteDeclarationIREmploye(d,i)"></button></td>
+      </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+  </div>
+
+  <div class="card-footer text-center"><button type="button" class="btn btn-dark" (click)="SaveModidfication(declarationIR)">Enregister la modification</button></div>
+</div>-->
+
+

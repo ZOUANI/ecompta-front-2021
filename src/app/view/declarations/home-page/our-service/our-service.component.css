@@ -1,7 +1,7 @@
 
 .card{
   background: white;
-  width: 500px;
+  width: 280px;
   height: 200px ;
   margin-top:10px ;
   margin-bottom: 10px;
@@ -13,7 +13,7 @@
   margin: 30px;
   transition: 0.5s ease;
   cursor: pointer;
-
+  margin: 50px;
 
 
 
@@ -82,12 +82,24 @@
 }
 .card{
   border: 1px solid red ;
+
 }
 .card-footer{
 
-  color: #553620;
+  color: black;
   font-size: 15px;
   font-weight: 300;
 
 }
+div.contain{
+  width: 280px;
+  height: 280px;
+}
+div.container{
 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-right: 90px;
+}

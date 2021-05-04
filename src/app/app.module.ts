@@ -23,6 +23,11 @@ import {FactureCreateComponent} from "./view/facture-create/facture-create.compo
 import {FactureListComponent} from "./view/facture-list/facture-list.component";
 import {FactureJournalComponent} from "./view/facture-journal/facture-journal.component";
 import {FactureCriteriaComponent} from "./view/facture-criteria/facture-criteria.component";
+import {DeclarationComponent} from "./view/declarationIR/declaration/declaration.component";
+import {NgbdModalComponent, NgbdModalContent} from "./view/declarationIR/modal-component/modal-component";
+import {NgbdModalOptions} from "./view/declarationIR/quick-info-DeclEmp/modal-options";
+import {AvatarModule} from "primeng/avatar";
+import {AvatarGroupModule} from "primeng/avatargroup";
 
 
 @NgModule({
@@ -42,7 +47,11 @@ import {FactureCriteriaComponent} from "./view/facture-criteria/facture-criteria
     FactureListComponent,
     FactureJournalComponent,
     FactureCriteriaComponent,
-    DeclarationTvasaveComponent
+    DeclarationTvasaveComponent,
+    DeclarationComponent,
+    NgbdModalComponent,
+    NgbdModalOptions,
+    NgbdModalContent
 
   ],
   imports: [
@@ -54,7 +63,10 @@ import {FactureCriteriaComponent} from "./view/facture-criteria/facture-criteria
     NgxPaginationModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AvatarModule,
+    AvatarGroupModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

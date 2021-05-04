@@ -8,17 +8,34 @@ import {HttpClient} from '@angular/common/http';
 export class DeclarationService {
   private _creation: CategorieService ;
   private _liquidation: CategorieService ;
-  private _declarationTVA: CategorieService ;
+  private _declarationTVA: CategorieService;
   private _declarationIR: CategorieService ;
   private _declarationIS: CategorieService ;
   private _facture: CategorieService ;
-
+  private _categorieService:CategorieService;
+  private _categorieServices:Array<CategorieService>;
 
   private urlBase = 'http://localhost:8036';
   private urlCatServ='/gestion-comptabilite/categorieService';
   constructor(private http:HttpClient) { }
 
 
+  public findCard(){
+    this.http.get<Array<CategorieService>>(this.urlBase+this.urlCatServ+'/').subscribe(
+      data=>{
+        this.categorieServices=data;
+    console.log(this.categorieServices);
+
+
+
+
+      }
+    );
+  }
+
+
+
+/*
   public findBytitre(){
 
   this.http.get<CategorieService>(this.urlBase+this.urlCatServ+'/titre/creation').subscribe(
@@ -75,9 +92,30 @@ export class DeclarationService {
 
 
 }
+*/
 
 
+  get categorieService(): CategorieService {
+    if (this._categorieService==null){
+      this._categorieService=new CategorieService();
+    }
+    return this._categorieService;
+  }
 
+  set categorieService(value: CategorieService) {
+    this._categorieService = value;
+  }
+
+  get categorieServices(): Array<CategorieService> {
+    if (this._categorieServices==null){
+      this._categorieServices=new Array<CategorieService>();
+    }
+    return this._categorieServices;
+  }
+
+  set categorieServices(value: Array<CategorieService>) {
+    this._categorieServices = value;
+  }
 
   get creation(): CategorieService {
     if (this._creation==null){

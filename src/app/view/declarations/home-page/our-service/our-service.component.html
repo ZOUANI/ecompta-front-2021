@@ -1,6 +1,23 @@
 
-<div class="card-deck container">
-  <div class="row">
+<div class=" container  ">
+
+  <div class="contain" *ngFor="let c of categorieServices">
+    <div class="card  " routerLink="{{c.lien}}" routerLinkActive="active">
+
+      <div class="card-body" >
+        <h1 class="card-title text-center">{{c.titre}}</h1>
+        <p class="card-text text-center">{{c.description}}</p>
+      </div>
+      <div class="card-footer text-center">
+        <h1>{{c.montant}}$/Mo</h1>
+      </div>
+    </div>
+
+
+
+
+
+ <!-- <div class="row">
   <div class="card col-md-4 card__front" routerLink="/creation" routerLinkActive="active">
 
     <div class="card-body" >
@@ -79,6 +96,6 @@
         <h1>{{facture.montant}}$/Mo</h1>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
-
+</div>
