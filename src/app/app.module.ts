@@ -23,8 +23,11 @@ import {FactureCreateComponent} from "./view/facture-create/facture-create.compo
 import {FactureListComponent} from "./view/facture-list/facture-list.component";
 import {FactureJournalComponent} from "./view/facture-journal/facture-journal.component";
 import {FactureCriteriaComponent} from "./view/facture-criteria/facture-criteria.component";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MenuDecISComponent } from './view/menu-dec-is/menu-dec-is.component';
+import {DeclarationComponent} from "./view/declarationIR/declaration/declaration.component";
+import {NgbdModalComponent, NgbdModalContent} from "./view/declarationIR/modal-component/modal-component";
+import {NgbdModalOptions} from "./view/declarationIR/quick-info-DeclEmp/modal-options";
+import {AvatarModule} from "primeng/avatar";
+import {AvatarGroupModule} from "primeng/avatargroup";
 
 
 @NgModule({
@@ -45,19 +48,25 @@ import { MenuDecISComponent } from './view/menu-dec-is/menu-dec-is.component';
     FactureJournalComponent,
     FactureCriteriaComponent,
     DeclarationTvasaveComponent,
-    MenuDecISComponent
+    DeclarationComponent,
+    NgbdModalComponent,
+    NgbdModalOptions,
+    NgbdModalContent
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+
     AppRoutingModule,
     MatDialogModule,
     NgxPaginationModule,
     FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    NgbModule
+    AvatarModule,
+    AvatarGroupModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

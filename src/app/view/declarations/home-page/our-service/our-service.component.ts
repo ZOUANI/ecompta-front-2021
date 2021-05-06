@@ -12,6 +12,17 @@ export class OurServiceComponent implements OnInit {
   constructor(private declarationService: DeclarationService ) { }
 
 
+  get categorieService(): CategorieService {
+
+    return this.declarationService.categorieService;
+  }
+  get categorieServices(): Array<CategorieService> {
+
+    return this.declarationService.categorieServices;
+  }
+
+
+
   get creation(): CategorieService {
 
     return this.declarationService.creation;
@@ -42,7 +53,8 @@ export class OurServiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.declarationService.findBytitre();
+   // this.declarationService.findBytitre();
+    this.declarationService.findCard();
   }
 
 }

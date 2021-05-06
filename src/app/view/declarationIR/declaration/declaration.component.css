@@ -1,0 +1,36 @@
+.card-header{
+  background-color: #f73045;
+  color: white;
+  border-top-right-radius: 15px ;
+  border-top-left-radius: 15px ;
+}
+.card{
+  border: 1px solid #f73045;
+
+}
+
+
+
+.p-inputgroup{
+  margin-top: 10px;
+  margin-bottom: -3px;
+  margin-left: 300px;
+}
+button.bottom{
+  margin-top: -50px;
+}
+.card-footer.bottom{
+  padding: 0;
+}
+div.card{
+  border-top-right-radius: 18px ;
+  border-top-left-radius: 18px ;
+}
+button p{
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+}
+button.click{
+  height: 35px;
+}
