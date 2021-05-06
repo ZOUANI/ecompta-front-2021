@@ -1,6 +1,8 @@
 import {Societe} from './societe.model';
 import {Facture} from './facture.model';
 import {TauxIS} from './taux-is.model';
+import {TauxIsConfig} from "./taux-is-config.model";
+import {EtatDeclaration} from "./etat-declaration.model";
 
 export class DeclarationIS {
   public id: number;
@@ -13,5 +15,7 @@ export class DeclarationIS {
   public montantISPaye: number;
   public societe = new Societe();
   public tauxIS = new TauxIS();
+  public tauxIsConfig = new TauxIsConfig();
   public facture = new Array<Facture>();
+  public etatDeclaration= new EtatDeclaration();
 }

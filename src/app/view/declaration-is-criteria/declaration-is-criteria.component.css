@@ -2,12 +2,21 @@ h1{
   font-size: 40px;
   font-weight: bolder;
   text-align: center;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+}
+.card-header{
+  font-size:16.0pt;
 }
 .col-md-3{
   padding: 15px;
   text-align: center;
+}
+
+i{
+  font-weight: bolder;
+  color: green;
+  font-size: 30px;
 }
 
 #firstcard{
@@ -19,3 +28,20 @@ h1{
 .card{
   border-color: darkred;
 }
+.col-md-6 > .card{
+  height: 390px;
+}
+
+.btn-warning, .btn-danger{
+  font-size: 20px;
+  border-radius: 15px;
+}
+
+.btn-info{
+  margin:5px;
+  border-radius: 50%;
+  height:35px;
+  width:35px;
+  font-size: 20px;
+}
+

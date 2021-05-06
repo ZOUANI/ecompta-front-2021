@@ -5,6 +5,7 @@ import {DialogFactureComponent} from "../dialog-facture/dialog-facture.component
 import {DeclarationIS} from "../../controller/model/declaration-is.model";
 import {Facture} from "../../controller/model/facture.model";
 import {DeclarationIsObject} from "../../controller/model/declaration-is-object.model";
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-declaration-is-save',
@@ -62,6 +63,9 @@ export class DeclarationIsSaveComponent implements OnInit {
     return this.declarationIsService.saveDeclIS();
   }
 
+  public saveDecISBrouillon(){
+    return this.declarationIsService.saveDecISBrouillon();
+  }
   ngOnInit(): void {
   }
 

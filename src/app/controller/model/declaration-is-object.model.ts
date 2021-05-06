@@ -1,4 +1,5 @@
 import {Facture} from "./facture.model";
+import {TauxIsConfig} from "./taux-is-config.model";
 
 export class DeclarationIsObject {
   public annee: number;
@@ -10,4 +11,5 @@ export class DeclarationIsObject {
   public montantISPaye : number;
   public factureD  = new Array<Facture>();
   public factureC  = new Array<Facture>();
+  public tauxIsConfig = new TauxIsConfig();
 }

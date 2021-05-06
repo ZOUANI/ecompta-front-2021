@@ -29,7 +29,7 @@
         </div>
         <p>  </p>
         <div class="card">
-          <div class="card-header" style="font-size:16.0pt">Result </div>
+          <div class="card-header">Result </div>
           <div class="card-body">
             <div class="row">
               <div class="col-lg">
@@ -44,10 +44,13 @@
                       <th>Montant IS calculé</th>
                       <th>Montant IS payé</th>
                       <th>Société</th>
+                      <th>État</th>
+                      <th></th>
+                      <th>Détail</th>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let d of declarationISList">
-                        <td>{{d.ref}}</td>
+                      <tr *ngFor="let d of declarationISList |paginate: {id:'listDecIS',itemsPerPage: itemsPerPageDecIS, currentPage:page, totalItems:declarationISList.length }">
+                      <td>{{d.ref}}</td>
                         <td>{{d.annee}}</td>
                         <td>{{d.totalHTGain}}</td>
                         <td>{{d.totalHTCharge}}</td>
@@ -55,18 +58,100 @@
                         <td>{{d.montantISCalcule}}</td>
                         <td>{{d.montantISPaye}}</td>
                         <td>{{d.societe.ice}}</td>
+                        <td *ngIf="d.etatDeclaration.libelle == 'valider'"><span><i class="bi bi-check2-circle"></i></span></td>
+                        <td *ngIf="d.etatDeclaration.libelle == 'brouillon'">
+                          <button class="btn btn-warning fa fa-edit"></button>
+                          <button class="btn btn-danger fa fa-trash"></button>
+                        <td>
+                        <td>
+                          <button class="btn btn-info fa fa-info" (click)="findFactures(d)"></button>
+                        </td>
                       </tr>
                       </tbody>
                     </table>
+                <div>
+                  <pagination-controls id="listDecIS" maxSize="5" directionLinks="true" (pageChange)="page=$event"></pagination-controls>
+                </div>
               </div>
             </div>
             <p></p>
           </div>
         </div>
+        <p> </p>
+        <div class="card" *ngIf="a == true">
+          <div class="card-header">Factures :  &nbsp; &nbsp; Declaration IS pour l'année {{declarationObject.annee}}</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-header">Crédit</div>
+                  <div class="card-body">
+                    <table class="table">
+                      <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Libellé</th>
+                        <th scope="col">Montant HT</th>
+                        <th scope="col">S.Source</th>
+                        <th scope="col">S.Destination</th>
+                        <th scope="col">Action</th>
+                        <th scope="col"></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let fc of declarationObject.factureC |paginate: {id:'listFactC',itemsPerPage: itemsPerPageFact, currentPage:page2, totalItems:declarationObject.factureC.length }; index as i">
+                        <th scope="row">{{fc.ref}}</th>
+                        <td>{{fc.montantHorsTaxe}}</td>
+                        <td>{{fc.societeSource.ice}}</td>
+                        <td>{{fc.societeDistination.ice}}</td>
+                        <td><div class="circle-btn"><button type="button" class=" fa fa-trash btn btn-danger"></button></div></td>
+                        <td><div class="circle-btn"><button type="button" class=" fa fa-edit btn btn-warning"></button></div></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <div>
+                      <pagination-controls id="listFactC" maxSize="5" directionLinks="true" (pageChange)="page2=$event"></pagination-controls>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-header">Débit</div>
+                  <div class="card-body">
+                    <table class="table">
+                      <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Libellé</th>
+                        <th scope="col">Montant HT</th>
+                        <th scope="col">S.Source</th>
+                        <th scope="col">S.Destination</th>
+                        <th scope="col">Action</th>
+                        <th scope="col"></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let fd of declarationObject.factureD |paginate: {id:'listFactD',itemsPerPage: itemsPerPageFact, currentPage:page3, totalItems:declarationObject.factureD.length }; index as i">
+                        <th scope="row">{{fd.ref}}</th>
+                        <td>{{fd.montantHorsTaxe}}</td>
+                        <td>{{fd.societeSource.ice}}</td>
+                        <td>{{fd.societeDistination.ice}}</td>
+                        <td><div class="circle-btn"><button type="button" class=" fa fa-trash btn btn-danger" (click)="deleteFact(i, fd)"></button></div></td>
+                        <td><div class="circle-btn"><button type="button" class=" fa fa-edit btn btn-warning" (click)="clicUpdateF(i, fd)"></button></div></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <div>
+                      <pagination-controls id="listFactD" maxSize="5" directionLinks="true" (pageChange)="page3=$event"></pagination-controls>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
       </div>
 
     </div>
-    <!-- ----- -->
-
 </div>

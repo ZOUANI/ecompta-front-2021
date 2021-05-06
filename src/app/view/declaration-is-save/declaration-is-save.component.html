@@ -14,10 +14,24 @@
       </div>
       <p></p>
       <div class="card" id="cardFact">
+
       <div class="row">
-        <div class="col-sm-6">
+        <!--<div class="col-sm-6">
             <div class="card-body">
-              <h5 class="card-title" >Factures -CRÉDIT-  <span><button type="button" class="circle-btnplus fa fa-plus btn btn-primary"  (click)="creerFactCred()"></button></span></h5>
+
+
+              <div class="row">
+                <div class="col-md-3"><h5 class="card-title" >Factures -CRÉDIT-  <span><button type="button" class="circle-btnplus fa fa-plus btn btn-primary"  (click)="creerFactCred()"></button></span></h5></div>
+                <div  class="col-md-4"><label>Total hors taxe gain :</label>
+                  <div class="input-group">
+                    <input type="number" disabled class="form-control" [value]="declarationIsObject.totalHTGain">
+                    <div class="input-group-append">
+                      <span class="input-group-text">MAD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <table class="table">
                 <thead class="thead-dark">
                 <tr>
@@ -44,13 +58,72 @@
                 <pagination-controls id="listFactC" maxSize="5" directionLinks="true" (pageChange)="page=$event"></pagination-controls>
               </div>
             </div>
-            <!--  table 2 -->
           <p> </p>
-          <!--- gain --->
+        </div> -->
+
+
+
+        <div class="col-sm-6">
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-md-4"><h5 class="card-title" >Factures -CRÉDIT- <span><button type="button" class="circle-btnplus fa fa-plus btn btn-primary"  (click)="creerFactCred()"></button></span></h5></div>
+              <div  class="col-md-4"><label>Total hors taxe gain :</label>
+                <div class="input-group">
+                  <input type="number" disabled class="form-control" [value]="declarationIsObject.totalHTGain">
+                  <div class="input-group-append">
+                    <span class="input-group-text">MAD</span>
+                  </div>
+                </div>
+                <p>  </p>
+              </div>
+            </div>
+
+            <table class="table">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">Libellé</th>
+                <th scope="col">Montant HT</th>
+                <th scope="col">S.Source</th>
+                <th scope="col">S.Destination</th>
+                <th scope="col">Action</th>
+                <th scope="col"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let fc of declarationIsObject.factureC |paginate: {id:'listFactC',itemsPerPage: pageSize, currentPage:page, totalItems:declarationIsObject.factureC.length }; index as i">
+                <th scope="row">{{fc.ref}}</th>
+                <td>{{fc.montantHorsTaxe}}</td>
+                <td>{{fc.societeSource.ice}}</td>
+                <td>{{fc.societeDistination.ice}}</td>
+                <td><div class="circle-btn"><button type="button" class=" fa fa-trash btn btn-danger" (click)="deleteFact(i, fc)"></button></div></td>
+                <td><div class="circle-btn"><button type="button" class=" fa fa-edit btn btn-warning" (click)="clicUpdateF(i, fc)"></button></div></td>
+              </tr>
+              </tbody>
+            </table>
+            <div>
+              <pagination-controls id="listFactC" maxSize="5" directionLinks="true" (pageChange)="page=$event"></pagination-controls>
+            </div>
+          </div>
         </div>
+
+
         <div class="col-sm-6">
             <div class="card-body">
-              <h5 class="card-title" >Factures -DÉBIT-  <span><button type="button" class="circle-btnplus fa fa-plus btn btn-primary"  (click)="creerFactDeb()"></button></span></h5>
+
+              <div class="row">
+                <div class="col-md-4"><h5 class="card-title" >Factures -DÉBIT-  <span><button type="button" class="circle-btnplus fa fa-plus btn btn-primary"  (click)="creerFactDeb()"></button></span></h5></div>
+                <div  class="col-md-4"><label>Total hors taxe charge :</label>
+                  <div class="input-group">
+                    <input type="number" disabled class="form-control" [value]="declarationIsObject.totalHTCharge">
+                    <div class="input-group-append">
+                      <span class="input-group-text">MAD</span>
+                    </div>
+                  </div>
+                  <p>  </p>
+                </div>
+              </div>
+
               <table class="table">
                 <thead class="thead-dark">
                 <tr>
@@ -82,27 +155,6 @@
       </div>
       <p> </p>
       <div class="row">
-        <div class="col-md-2 offset-md-2"><label>Total hors taxe gain :</label>
-          <div class="input-group">
-            <input type="number" disabled class="form-control" [value]="declarationIsObject.totalHTGain">
-            <div class="input-group-append">
-              <span class="input-group-text">MAD</span>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-md-2 offset-md-4"><label>Total hors taxe charge :</label>
-          <div class="input-group">
-            <input type="number" disabled class="form-control" [value]="declarationIsObject.totalHTCharge">
-            <div class="input-group-append">
-              <span class="input-group-text">MAD</span>
-            </div>
-          </div>
-        </div>
-
-        <!------>
-
         <div class="col-md-3"><label>Résultat fiscal :</label>
           <div class="input-group">
             <input type="number" disabled class="form-control" [value]="declarationIsObject.totalHTDiff">
@@ -113,7 +165,7 @@
         </div>
         <div class="col-md-3"><label>Cotisation minimale :</label>
           <div class="input-group">
-            <input type="number" disabled class="form-control" [value]="declarationIsObject.montantISCalcule">
+            <input type="number" disabled class="form-control" [value]="declarationIsObject.tauxIsConfig.cotisationMinimale">
             <div class="input-group-append">
               <span class="input-group-text">MAD</span>
             </div>
@@ -139,8 +191,10 @@
       <p> </p>
     </div>
     <div class="card-footer">
-      <div class="downl"><button class="btn-downl btn btn-primary fa fa-download"></button></div>
-      <div class="save"><button class="btn-save btn btn-primary" (click)="saveDeclIS()">SAVE</button></div>
+      <!--<div class="downl"><button class="btn-downl btn btn-primary fa fa-download"></button></div>
+      <div class="save"><button class="btn-save btn btn-primary" (click)="saveDeclIS()">SAVE</button></div>-->
+      <button class="btn btn-primary offset-md-4" (click)="saveDecISBrouillon()">Enregistrer comme brouillon</button>
+      <button class="btn btn-primary offset-md-1" (click)="saveDeclIS()">Valider</button>
     </div>
   </div>
 </div>

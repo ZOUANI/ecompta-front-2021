@@ -20,7 +20,7 @@ export class DeclarationISService {
   constructor(private http: HttpClient) { }
 
   public afficherDecIS(): DeclarationIsObject{
-    this.http.post<DeclarationIsObject>(environment.baseUrlGestionComptabilite + '/declarationIS/frontEnd/', this.declarationIsObject).subscribe(
+    this.http.post<DeclarationIsObject>(environment.baseUrlGestionComptabilite + '/declarationIS/afficheDecIS/', this.declarationIsObject).subscribe(
       data => {
         console.log('Recherche bien effectué');
         this.declarationIsObject = data;
@@ -41,6 +41,19 @@ export class DeclarationISService {
         }
       }, error => {
         console.log('Erreur !!! DeclarationIS NON enregistrée');
+      }
+    );
+    return this.declarationIs;
+  }
+  public saveDecISBrouillon(): DeclarationIS{
+    this.http.post<number>(environment.baseUrlGestionComptabilite + '/declarationIS/saveBrouillon/', this.declarationIs).subscribe(
+      data => {
+        console.log(data);
+        if (data > 0){
+          console.log('Brouillon BIEN enregistré ');
+        }
+      }, error => {
+        console.log('Erreur !!! Brouillon NON enregistré');
       }
     );
     return this.declarationIs;

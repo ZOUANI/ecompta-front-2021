@@ -18,7 +18,7 @@ h1{
   font-size: 40px;
   font-weight: bolder;
   text-align: center;
-  padding-top: 2.5%;
+  padding-top: 1.5%;
   padding-bottom: 1.5%;
 }
 .col-md-3{
@@ -28,7 +28,7 @@ h1{
 #cardFact{
   border-color: darkred;
   background-color: #fafafa;
-  height: 370px;
+  height: 400px;
 }
 
 .circle-btn button{
@@ -38,7 +38,7 @@ h1{
   width:38px;
   font-size: 17px;
 }
-.col-md-2 > label, .col-md-3 > label{
+.col-md-2 > label, .col-md-3 > label, .col-md-4 >label{
   font-weight: bold;
 }
 .circle-btnplus{

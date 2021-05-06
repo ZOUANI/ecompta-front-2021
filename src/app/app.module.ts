@@ -23,6 +23,8 @@ import {FactureCreateComponent} from "./view/facture-create/facture-create.compo
 import {FactureListComponent} from "./view/facture-list/facture-list.component";
 import {FactureJournalComponent} from "./view/facture-journal/facture-journal.component";
 import {FactureCriteriaComponent} from "./view/facture-criteria/facture-criteria.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MenuDecISComponent } from './view/menu-dec-is/menu-dec-is.component';
 
 
 @NgModule({
@@ -42,19 +44,20 @@ import {FactureCriteriaComponent} from "./view/facture-criteria/facture-criteria
     FactureListComponent,
     FactureJournalComponent,
     FactureCriteriaComponent,
-    DeclarationTvasaveComponent
+    DeclarationTvasaveComponent,
+    MenuDecISComponent
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-
     AppRoutingModule,
     MatDialogModule,
     NgxPaginationModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],
