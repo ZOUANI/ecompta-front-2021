@@ -61,6 +61,9 @@ export class DeclarationIsCriteriaComponent implements OnInit {
     return this.declarationIsService.deleteFact(index, fact);
   }
 
+  public decIsToXml(decIs: DeclarationIS){
+    return this.declarationVoService.decIsToXml(decIs);
+  }
   ngOnInit(): void {
   }
 

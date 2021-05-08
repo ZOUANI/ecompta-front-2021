@@ -144,16 +144,12 @@
       <p> </p>
     </div>
     <div class="card-footer">
-      <button class="btn btn-primary offset-3" (click)="saveDecISBrouillon()">Enregistrer comme brouillon</button>
-      <button class="btn btn-primary offset-1" (click)="saveDeclIS()">Valider</button>
+      <button class="butt" (click)="saveDecISBrouillon()">Enregistrer comme brouillon</button>
+      <button class="butt" (click)="saveDeclIS()">Valider</button>
+        <input type="file" class="upload-box" />
     </div>
   </div>
 </div>
-
-
-
-
-
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">

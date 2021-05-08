@@ -32,7 +32,7 @@ i{
   height: 390px;
 }
 
-.btn-warning, .btn-danger{
+.btn-warning, .btn-danger, .fa-cloud-download{
   font-size: 20px;
   border-radius: 15px;
 }
@@ -51,4 +51,14 @@ i{
 .bi-exclamation-octagon-fill{
   color: red;
   font-weight: bolder;
+}
+.fa-trash{
+  margin-left: 45px;
+}
+.fa-cloud-download{
+  margin-bottom: 15px;
+  margin-left: 50px;
+}
+.bi-check2-circle{
+  font-size: 35px;
 }

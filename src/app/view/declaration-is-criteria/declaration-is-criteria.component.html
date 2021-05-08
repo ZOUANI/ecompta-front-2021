@@ -49,22 +49,25 @@
                       <th>Détail</th>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let d of declarationISList |paginate: {id:'listDecIS',itemsPerPage: itemsPerPageDecIS, currentPage:page, totalItems:declarationISList.length}; index as i">
-                      <td>{{d.ref}}</td>
-                        <td>{{d.annee}}</td>
-                        <td>{{d.totalHTGain}}</td>
-                        <td>{{d.totalHTCharge}}</td>
-                        <td>{{d.totalHTDiff}}</td>
-                        <td>{{d.montantISCalcule}}</td>
-                        <td>{{d.montantISPaye}}</td>
-                        <td>{{d.societe.ice}}</td>
-                        <td *ngIf="d.etatDeclaration.libelle == 'valider'"><span><i class="bi bi-check2-circle"></i></span></td>
-                        <td *ngIf="d.etatDeclaration.libelle == 'brouillon'">
-                          <button class="btn btn-warning fa fa-send" (click)="openForUpdate(content, i, d)"></button>
-                          <button class="btn btn-danger fa fa-trash" (click)="openForDelete(content1, i, d)"></button>
+                      <tr *ngFor="let dec of declarationISList |paginate: {id:'listDecIS',itemsPerPage: itemsPerPageDecIS, currentPage:page, totalItems:declarationISList.length}; index as i">
+                      <td>{{dec.ref}}</td>
+                        <td>{{dec.annee}}</td>
+                        <td>{{dec.totalHTGain}}</td>
+                        <td>{{dec.totalHTCharge}}</td>
+                        <td>{{dec.totalHTDiff}}</td>
+                        <td>{{dec.montantISCalcule}}</td>
+                        <td>{{dec.montantISPaye}}</td>
+                        <td>{{dec.societe.ice}}</td>
+                        <td *ngIf="dec.etatDeclaration.libelle == 'valider'">
+                          <span><i class="bi bi-check2-circle"></i></span>
+                          <button class="btn btn-success fa fa-cloud-download" (click)="decIsToXml(dec)"></button>
+                        </td>
+                        <td *ngIf="dec.etatDeclaration.libelle == 'brouillon'">
+                          <button class="btn btn-warning fa fa-send" (click)="openForUpdate(content, i, dec)"></button>
+                          <button class="btn btn-danger fa fa-trash" (click)="openForDelete(content1, i, dec)"></button>
                         <td>
                         <td>
-                          <button class="btn btn-info fa fa-info" (click)="findFactures(d)"></button>
+                          <button class="btn btn-info fa fa-info" (click)="findFactures(dec)"></button>
                         </td>
                       </tr>
                       </tbody>

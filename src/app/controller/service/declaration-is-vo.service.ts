@@ -41,6 +41,15 @@ export class DeclarationIsVoService {
     );
   }
 
+  public decIsToXml(decIs: DeclarationIS){
+    this.http.post(environment.baseUrlGestionComptabilite + '/declarationIS/toXML/', decIs).subscribe(
+      data =>{
+        console.log('xml BIEN généré');
+      }, error => {
+        console.log('Erreur XML!!!!');
+      }
+    );
+  }
   public validerBrouillon(decIsB: DeclarationIS){
     this.http.post<number>(environment.baseUrlGestionComptabilite + '/declarationIS/validerBrouillon/', decIsB).subscribe(
       data =>{

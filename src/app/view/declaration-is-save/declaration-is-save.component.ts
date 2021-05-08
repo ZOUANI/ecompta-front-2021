@@ -85,4 +85,3 @@ export class DeclarationIsSaveComponent implements OnInit {
   ngOnInit(): void {
   }
 }
-
