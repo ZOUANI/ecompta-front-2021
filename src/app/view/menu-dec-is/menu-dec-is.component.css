@@ -1,0 +1,24 @@
+.btn{
+  width: 200px;
+  height: 90px;
+
+}
+
+body
+{
+  padding: 300px;
+  background-color: red;
+}
+.container
+{
+  width: auto;
+  height: auto;
+  padding: 250px;
+}
+.butt
+{
+  margin: auto;
+  width: 200px;
+  height: 105px;
+  border-radius: 3px;
+}

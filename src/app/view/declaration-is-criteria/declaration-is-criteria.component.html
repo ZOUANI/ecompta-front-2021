@@ -49,7 +49,7 @@
                       <th>Détail</th>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let d of declarationISList |paginate: {id:'listDecIS',itemsPerPage: itemsPerPageDecIS, currentPage:page, totalItems:declarationISList.length }">
+                      <tr *ngFor="let d of declarationISList |paginate: {id:'listDecIS',itemsPerPage: itemsPerPageDecIS, currentPage:page, totalItems:declarationISList.length}; index as i">
                       <td>{{d.ref}}</td>
                         <td>{{d.annee}}</td>
                         <td>{{d.totalHTGain}}</td>
@@ -60,8 +60,8 @@
                         <td>{{d.societe.ice}}</td>
                         <td *ngIf="d.etatDeclaration.libelle == 'valider'"><span><i class="bi bi-check2-circle"></i></span></td>
                         <td *ngIf="d.etatDeclaration.libelle == 'brouillon'">
-                          <button class="btn btn-warning fa fa-edit"></button>
-                          <button class="btn btn-danger fa fa-trash"></button>
+                          <button class="btn btn-warning fa fa-send" (click)="openForUpdate(content, i, d)"></button>
+                          <button class="btn btn-danger fa fa-trash" (click)="openForDelete(content1, i, d)"></button>
                         <td>
                         <td>
                           <button class="btn btn-info fa fa-info" (click)="findFactures(d)"></button>
@@ -91,20 +91,20 @@
                       <tr>
                         <th scope="col">Libellé</th>
                         <th scope="col">Montant HT</th>
-                        <th scope="col">S.Source</th>
-                        <th scope="col">S.Destination</th>
-                        <th scope="col">Action</th>
-                        <th scope="col"></th>
+                        <th scope="col">Date opération</th>
+                        <th scope="col">Trimestre</th>
+                        <th scope="col">Sté Source</th>
+                        <th scope="col">Sté Destination</th>
                       </tr>
                       </thead>
                       <tbody>
                       <tr *ngFor="let fc of declarationObject.factureC |paginate: {id:'listFactC',itemsPerPage: itemsPerPageFact, currentPage:page2, totalItems:declarationObject.factureC.length }; index as i">
                         <th scope="row">{{fc.ref}}</th>
-                        <td>{{fc.montantHorsTaxe}}</td>
+                        <td>{{fc.montantHorsTaxe}}&nbsp;&nbsp;MAD</td>
+                        <td>{{fc.dateOperation}}</td>
+                        <td>{{fc.trim}}</td>
                         <td>{{fc.societeSource.ice}}</td>
                         <td>{{fc.societeDistination.ice}}</td>
-                        <td><div class="circle-btn"><button type="button" class=" fa fa-trash btn btn-danger"></button></div></td>
-                        <td><div class="circle-btn"><button type="button" class=" fa fa-edit btn btn-warning"></button></div></td>
                       </tr>
                       </tbody>
                     </table>
@@ -123,20 +123,20 @@
                       <tr>
                         <th scope="col">Libellé</th>
                         <th scope="col">Montant HT</th>
-                        <th scope="col">S.Source</th>
-                        <th scope="col">S.Destination</th>
-                        <th scope="col">Action</th>
-                        <th scope="col"></th>
+                        <th scope="col">Date opération</th>
+                        <th scope="col">Trimestre</th>
+                        <th scope="col">Sté Source</th>
+                        <th scope="col">Sté Destination</th>
                       </tr>
                       </thead>
                       <tbody>
                       <tr *ngFor="let fd of declarationObject.factureD |paginate: {id:'listFactD',itemsPerPage: itemsPerPageFact, currentPage:page3, totalItems:declarationObject.factureD.length }; index as i">
                         <th scope="row">{{fd.ref}}</th>
-                        <td>{{fd.montantHorsTaxe}}</td>
+                        <td>{{fd.montantHorsTaxe}}&nbsp;&nbsp;MAD</td>
+                        <td>{{fd.dateOperation}}</td>
+                        <td>{{fd.trim}}</td>
                         <td>{{fd.societeSource.ice}}</td>
                         <td>{{fd.societeDistination.ice}}</td>
-                        <td><div class="circle-btn"><button type="button" class=" fa fa-trash btn btn-danger" (click)="deleteFact(i, fd)"></button></div></td>
-                        <td><div class="circle-btn"><button type="button" class=" fa fa-edit btn btn-warning" (click)="clicUpdateF(i, fd)"></button></div></td>
                       </tr>
                       </tbody>
                     </table>
@@ -155,3 +155,44 @@
 
     </div>
 </div>
+
+
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><span><i class="bi bi-exclamation-triangle"></i></span></h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <p><strong>Voulez-vous vraiment valider la déclaration <span style="color: blue">JAS</span>  ? </strong></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="validerBrouillon(decIS)" (click)="c('Save click')">Valider</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Annuler</button>
+  </div>
+</ng-template>
+<!------>
+
+<ng-template #content1 let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title1"><span><i class="bi bi-exclamation-octagon-fill"></i></span></h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <p><strong>Voulez-vous vraiment supprimer la déclaration <span style="color: blue">JAS</span>  ? </strong></p>
+    <p>Toutes les informations associées à cette déclaration seront supprimées définitivement.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="c('Save click')">Supprimer</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Annuler</button>
+  </div>
+</ng-template>
+<!----->

@@ -34,7 +34,7 @@
 
         <div class="col-md-4">
           <label>TVA : </label>
-          <input type="text" class="form-control" [(ngModel)]="facture.tva.ref">
+          <input type="text" class="form-control" placeholder="Réference" [(ngModel)]="facture.tva.ref">
         </div>
 
         <div class="col-md-4">
@@ -49,8 +49,19 @@
 
         <div class="col-md-4">
           <label>Class comptable : </label>
-          <input type="text" class="form-control" placeholder="Réference" [(ngModel)]="facture.classComptable.numero">
+          <input type="text" class="form-control" placeholder="Numéro" [(ngModel)]="facture.classComptable.numero">
         </div>
+
+        <div class="col-md-4 offset-md-2">
+          <label>État facture : </label>
+          <input type="text" class="form-control" placeholder="Code" [(ngModel)]="facture.etatFacture.code">
+        </div>
+
+        <div class="col-md-4">
+          <label>État paiement : </label>
+          <input type="text" class="form-control" placeholder="Code" [(ngModel)]="facture.etatPaiement.code">
+        </div>
+
       </div>
     <p>  </p>
 
@@ -60,7 +71,7 @@
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button class="mat-raised-button btn-danger" (click)="closeAndRefresh()">FERMER</button>
+    <button class="mat-raised-button btn btn-danger" (click)="closeAndRefresh()">FERMER</button>
   </mat-dialog-actions>
 
 </div>

@@ -1,3 +1,4 @@
-<p>menu-dec-is works!</p>
-<button routerLink=""></button>
-<router-outlet name="router1"></router-outlet>
+<div class="container">
+  <div class="butt"><button class="btn btn-danger" [routerLink]="[{outlets: {'jas': ['save']}}]">Save</button></div>
+  <div class="butt"><button class="btn btn-danger" [routerLink]="[{outlets: {'jas': ['criteria']}}]" routerLinkActive="active">Criteria</button></div>
+</div>

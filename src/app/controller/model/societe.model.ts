@@ -3,6 +3,7 @@ export class Societe {
   public ice: string;
   public adresse: string;
   public raisonSociale: string;
+  public dateCreation: string;
   public anneeExploitation: number;
   public age: number;
 }

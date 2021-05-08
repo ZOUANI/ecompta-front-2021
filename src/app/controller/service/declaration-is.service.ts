@@ -134,6 +134,8 @@ export class DeclarationISService {
     myCloneF.declarationIS = facture.declarationIS;
     myCloneF.declarationTva = facture.declarationTva;
     myCloneF.declarationIR = facture.declarationIR;
+    myCloneF.etatFacture = facture.etatFacture;
+    myCloneF.etatPaiement = facture.etatPaiement;
     return myCloneF;
   }
 

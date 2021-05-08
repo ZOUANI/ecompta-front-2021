@@ -12,6 +12,9 @@ import {DeclarationISComponent} from './view/LesServices/declaration-is/declarat
 import {FactureComponent} from './view/LesServices/facture/facture.component';
 import {CreationComponent} from './view/LesServices/creation/creation.component';
 import {ClassComptableComponent} from './view/classeComptable/classComptable.component';
+import {DeclarationIsSaveComponent} from "./view/declaration-is-save/declaration-is-save.component";
+import {MenuDecISComponent} from "./view/menu-dec-is/menu-dec-is.component";
+import {DeclarationIsCriteriaComponent} from "./view/declaration-is-criteria/declaration-is-criteria.component";
 
 export const components =[HomePageComponent, AboutUsComponent, CreationComponent, LiquidationComponent, DeclarationTVAComponent, DeclarationIRComponent, DeclarationISComponent, FactureComponent , ClassComptableComponent];
 
@@ -23,11 +26,27 @@ const routes: Routes = [
   {path: 'liquidation' , component: components[3]},
   {path: 'declaration-tva' , component: components[4]},
   {path: 'declaration-ir' , component: components[5]},
-  {path: 'declaration-is' , component: components[6]},
+  {path: 'declaration-is' , component: components[6], children: [
+      {
+        path: '',
+        component: MenuDecISComponent,
+        outlet: 'jas',
+      },
+      {
+        path: 'save',
+        component: DeclarationIsSaveComponent,
+        outlet: 'jas',
+      },
+      {
+        path: 'criteria',
+        component: DeclarationIsCriteriaComponent,
+        outlet: 'jas',
+      }
+    ]},
   {path: 'facture' , component: components[7]},
   {path: 'classe-comptable' , component: components[8]},
   //{path: '**' , component: PageNotFoundedComponent}
-
+  //{path: 'declaration-is/dec-is-save' , component: DeclarationIsSaveComponent, outlet: "jas"},
 
 
 ];

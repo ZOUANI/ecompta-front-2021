@@ -28,6 +28,7 @@ import {NgbdModalComponent, NgbdModalContent} from "./view/declarationIR/modal-c
 import {NgbdModalOptions} from "./view/declarationIR/quick-info-DeclEmp/modal-options";
 import {AvatarModule} from "primeng/avatar";
 import {AvatarGroupModule} from "primeng/avatargroup";
+import {MenuDecISComponent} from "./view/menu-dec-is/menu-dec-is.component";
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {AvatarGroupModule} from "primeng/avatargroup";
     DeclarationComponent,
     NgbdModalComponent,
     NgbdModalOptions,
-    NgbdModalContent
+    NgbdModalContent,
+    MenuDecISComponent
 
   ],
   imports: [

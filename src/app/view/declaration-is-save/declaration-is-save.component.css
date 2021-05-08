@@ -62,3 +62,11 @@ h1{
 .save{
   padding-top: 5px;
 }
+p > span{
+  font-weight: bold;
+  color: blue;
+}
+.card-footer > button{
+  width: 300px;
+  height: 45px;
+}

@@ -44,4 +44,11 @@ i{
   width:35px;
   font-size: 20px;
 }
-
+.bi-exclamation-triangle{
+  color: gold;
+  font-weight: bolder;
+}
+.bi-exclamation-octagon-fill{
+  color: red;
+  font-weight: bolder;
+}

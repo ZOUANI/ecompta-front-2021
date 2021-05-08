@@ -4,6 +4,8 @@ import {Tva} from './tva.model';
 import {DeclarationTva} from "./declaration-tva.model";
 import {ClasseComptable} from "./classeComptable.model";
 import {DeclarationIR} from "./declaration-ir.model";
+import {EtatPaiement} from "./etat-paiement.model";
+import {EtatFacture} from "./etat-facture.model";
 
 export class Facture {
   public id: number;
@@ -19,9 +21,11 @@ export class Facture {
   public typeOperation: string;
   public societeSource = new Societe();
   public societeDistination = new Societe();
-  public tva = new Tva;
+  public tva = new Tva();
   public classComptable = new ClasseComptable();
   public  declarationIS = new DeclarationIS();
   public declarationTva = new DeclarationTva();
   public declarationIR = new DeclarationIR();
+  public etatPaiement = new EtatPaiement();
+  public etatFacture = new EtatFacture();
 }

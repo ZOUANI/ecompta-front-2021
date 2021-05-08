@@ -4,7 +4,6 @@ import {environment} from '../../../environments/environment';
 import {DeclarationIsVo} from '../model/declaration-is-vo.model';
 import {DeclarationIS} from '../model/declaration-is.model';
 import {DeclarationIsObject} from "../model/declaration-is-object.model";
-import {dateComparator} from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-tools";
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +37,19 @@ export class DeclarationIsVoService {
         this.declarationObject = data;
       }, error => {
         console.log('NOOO BIEN !!!!');
+      }
+    );
+  }
+
+  public validerBrouillon(decIsB: DeclarationIS){
+    this.http.post<number>(environment.baseUrlGestionComptabilite + '/declarationIS/validerBrouillon/', decIsB).subscribe(
+      data =>{
+        console.log('data = ' + data);
+        if (data > 0){
+          console.log('Dec IS est VALIDÉE');
+        }
+      }, error => {
+        console.log('Dec IS N\'est PAS validée, Errrrrr!!!!!');
       }
     );
   }

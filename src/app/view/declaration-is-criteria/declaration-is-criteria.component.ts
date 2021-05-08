@@ -5,7 +5,8 @@ import {DeclarationIsVo} from '../../controller/model/declaration-is-vo.model';
 import {DeclarationIsObject} from "../../controller/model/declaration-is-object.model";
 import {Facture} from "../../controller/model/facture.model";
 import {DeclarationISService} from "../../controller/service/declaration-is.service";
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+
 
 @Component({
   selector: 'app-declaration-is-criteria',
@@ -20,10 +21,26 @@ export class DeclarationIsCriteriaComponent implements OnInit {
   itemsPerPageDecIS = 2;
   itemsPerPageFact = 3;
   a = false;
+  public index: number;
+  public decIS: DeclarationIS;
 
-  constructor(private declarationVoService: DeclarationIsVoService, private declarationIsService: DeclarationISService) {}
+  constructor(private declarationVoService: DeclarationIsVoService, private declarationIsService: DeclarationISService, private modalService: NgbModal) {}
 
+  openForUpdate(content, i: number, dec: DeclarationIS) {
+    this.index = i;
+    this.decIS = dec;
+    this.modalService.open(content);
+  }
 
+  openForDelete(content1, i: number, dec: DeclarationIS) {
+    this.index = i;
+    this.decIS = dec;
+    this.modalService.open(content1);
+  }
+
+  public validerBrouillon(decIsB: DeclarationIS){
+    return this.declarationVoService.validerBrouillon(decIsB);
+  }
   get declarationISList(): Array<DeclarationIS> {
     return this.declarationVoService.declarationISList;
   }
@@ -44,9 +61,6 @@ export class DeclarationIsCriteriaComponent implements OnInit {
     return this.declarationIsService.deleteFact(index, fact);
   }
 
-  public clicUpdateF(index:number, f: Facture){
-    return this.declarationIsService.clicUpdateF(index, f);
-  }
   ngOnInit(): void {
   }
 
